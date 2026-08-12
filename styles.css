@@ -851,10 +851,32 @@ body {
 
 @media (max-width: 768px) {
   .entries-grid { grid-template-columns: 1fr; }
-  .stats-row { flex-direction: column; align-items: stretch; }
-  .stat-card { min-width: auto; }
+  .stats-row { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 12px; 
+  }
+  .stat-card { 
+    min-width: auto; 
+    padding: 16px 12px; 
+  }
+  .stat-card:last-child {
+    grid-column: 1 / -1; /* Make the completion percentage span full width */
+  }
+  .stat-number { font-size: 1.8rem; }
+  
   .toolbar-inner { flex-direction: column; align-items: stretch; }
-  .filter-group { overflow-x: auto; flex-wrap: nowrap; padding-bottom: 4px; }
+  .filter-group { 
+    overflow-x: auto; 
+    flex-wrap: nowrap; 
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; /* Firefox */
+  }
+  .filter-group::-webkit-scrollbar { 
+    display: none; /* Safari and Chrome */
+  }
+  
   .phase-banner { height: 140px; }
   .phase-banner-text { font-size: 1.8rem; }
   .search-wrapper { flex: 1 1 100%; min-width: 0; }
@@ -862,12 +884,16 @@ body {
   .card-desc { padding-left: 0; }
   .episodes-section { padding-left: 0; }
   .saga-subtitle { margin-left: 0; }
+  .episodes-toggle { flex-wrap: wrap; }
 }
 
 @media (max-width: 480px) {
-  .hero-title { font-size: clamp(2rem, 8vw, 3rem); }
+  .hero-title { font-size: clamp(2rem, 8vw, 2.5rem); }
   .legend-bar { gap: 12px; padding: 12px 16px; }
   .entries-grid { gap: 12px; }
   .card-content { padding: 14px 16px; }
   .main-content { padding: 24px 16px 60px; }
+  .ft-card { align-items: flex-start; }
+  .ft-priority { width: 28px; height: 28px; font-size: 0.75rem; margin-top: 2px; }
+  .card-badges { flex-wrap: wrap; }
 }
