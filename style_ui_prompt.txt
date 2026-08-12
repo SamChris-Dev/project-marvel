@@ -1,0 +1,286 @@
+MARVEL CHRONOLOGICAL WATCH TRACKER — UI REDESIGN PROMPT
+Design direction inspired by Marvel.com + IMDb.com
+
+
+
+============================================================
+PROMPT
+============================================================
+Redesign the UI of my Marvel movies chronological-watch-tracker
+website. I want the visual direction to fuse two references:
+
+- Marvel.com: dark, cinematic, dramatic, poster-and-key-art-forward,
+  bold condensed headlines, big hero banners.
+- IMDb.com: dense but scannable information design, rating/status
+  badges, clear watched-vs-unwatched states, compact filter and sort
+  controls, multiple view densities (grid/list/compact).
+
+The result should feel like "mission control for the MCU" — dramatic
+enough to feel like a movie site, organized enough to actually track
+30+ films without friction. Prioritize clarity of watch progress and
+chronological order above decoration.
+
+============================================================
+1. OVERALL MOOD
+============================================================
+- Dark theatre-mode base (near-black backgrounds) — like walking
+  into a screening room, not a spreadsheet.
+- Poster art is the hero everywhere it appears; UI chrome stays
+  quiet and gets out of the way.
+- Bold, confident, all-caps display type for titles and section
+  headers (comic/cinema energy).
+- Calm, highly legible body type for anything functional (dates,
+  counts, descriptions) so the tracker stays usable, not just pretty.
+- Every screen should answer "what have I watched, what's next" in
+  under 2 seconds.
+
+============================================================
+2. COLOR PALETTE
+============================================================
+Base (dark theatre background):
+- Background base:        #0B0B0D
+- Surface / card:          #18181B
+- Surface hover / raised:  #202024
+- Border / divider:        #2A2A2E
+
+Accents:
+- Marvel-inspired red (primary accent, CTAs, "watch next" highlight):
+  #ED1D24
+- Deeper red, pressed/dim state:  #7A1013
+- IMDb-inspired gold (badges, secondary accent, progress fill):
+  #F5C518
+- Deeper gold, pressed/dim state: #8A6F0E
+
+Status colors:
+- Watched:          #3DDC84 (green — kept separate from red/gold so
+  it reads instantly)
+- Up next / in progress: #F5C518 (gold)
+- Not yet watched:  #4B4B52 (neutral, low-contrast so backlog items
+  recede visually)
+
+Text:
+- Primary text:     #F5F5F0 (off-white, easier on the eyes than pure
+  white on a dark background)
+- Secondary/muted:  #A0A0A8
+- Text on accent-colored buttons: #0B0B0D
+
+Note: these are close to Marvel's and IMDb's actual brand colors but
+not pixel-identical — treat them as "inspired by." Worth designing
+your own wordmark/logo rather than reusing either brand's actual logo.
+
+============================================================
+3. TYPOGRAPHY
+============================================================
+Display / headline font (site title, hero titles, section headers,
+phase names):
+- A bold, tall, condensed sans-serif. Free options that capture the
+  Marvel-poster energy: "Anton," "Archivo Black," or "Bebas Neue"
+  (all free on Google Fonts).
+- Usage: uppercase, generous letter-spacing (1-2px). Headers only,
+  never body text.
+
+Body / UI font (nav, buttons, card metadata, descriptions):
+- A clean, highly legible grotesque sans-serif in the spirit of
+  IMDb's utilitarian type. Free options: "Inter" or "Roboto."
+- Usage: regular weight for body copy, medium/semibold for labels
+  and buttons.
+
+Optional accent font (dates, counters, stats — adds a
+"tracker/dashboard" feel):
+- A monospace font like "JetBrains Mono" or "Space Mono," used only
+  for numbers: progress percentages, release years, runtimes, watch
+  counts.
+
+============================================================
+4. PAGE STRUCTURE
+============================================================
+HEADER (sticky):
+- Left: site logo/wordmark in the display font.
+- Center/right: primary nav — Chronological Order / Release Order
+  toggle, Phases, Search.
+- Right: search icon (expands to a full search field on click), plus
+  a small persistent progress indicator (e.g. a thin ring or a
+  "34/47 watched" counter).
+
+HERO SECTION:
+- Full-width background image: backdrop art of the "up next" movie
+  in the chronological queue, with a dark gradient overlay
+  (transparent at top, fading to the background color at the bottom)
+  so text stays legible — the same trick Marvel.com uses on its own
+  hero banners.
+- Large display-font title of the up-next movie.
+- One-line status line, e.g. "Next in Phase 4 — Chronological
+  Position 34 of 47."
+- Primary CTA button in red: "Mark as Watched" or "Continue Watching."
+- A slim overall progress bar directly beneath the hero, filled gold.
+
+FILTER / CONTROL BAR (sticky under header, above content):
+- Order toggle: Chronological vs. Theatrical Release.
+- Phase/Saga filter pills (Phase 1, Phase 2, ... Multiverse Saga,
+  etc.) — horizontally scrollable on mobile.
+- Watch-status filter: All / Watched / Unwatched / Up Next.
+- View-density toggle, IMDb-style: Grid / List / Compact.
+
+MAIN CONTENT — grouped by Phase/Saga (mirrors how Marvel.com keeps
+its MCU grid separate from other Marvel films):
+- Each Phase/Saga gets its own section header: name + mini progress
+  readout ("6/8 watched") + optional thin progress bar.
+- Below each header: a responsive grid of movie cards (see Section 5).
+
+MOVIE DETAIL VIEW (modal or slide-over, triggered from a card):
+- Backdrop image at top with gradient overlay.
+- Title, one-paragraph synopsis, meta row (director, runtime,
+  release date, chronological placement, phase).
+- Prominent watched toggle button.
+- Close affordance (X, top-right).
+- Mirrors IMDb's quick-info popup pattern: fast, in-context detail
+  without leaving the page.
+
+FOOTER:
+- Minimal — muted text, a couple of links, maybe a compact repeat of
+  the overall progress stat.
+
+============================================================
+5. KEY COMPONENTS
+============================================================
+MOVIE CARD:
+- Poster image, 2:3 aspect ratio, ~8px rounded corners.
+- On hover: slight scale-up (1.03-1.05), subtle red glow shadow, a
+  dark overlay fades in with two quick actions — "Mark Watched"
+  (check icon) and "Quick Info" (i icon, opens the detail view).
+- Below poster: title (body font, semibold); meta line in muted text
+  with the year set in the mono font, e.g. "2014 · Phase 2."
+- Status indicator:
+  - Watched: small green check badge.
+  - Up next: gold ring/outline around the whole card.
+  - Unwatched: no badge, poster desaturated to ~80% so watched items
+    visually "pop" more than the backlog.
+
+PROGRESS BAR / RING:
+- Track color: border-subtle gray. Fill: gold-to-red gradient for a
+  satisfying "completion" feel.
+- Animate the fill on page load (ease-out, ~600ms).
+
+PHASE SECTION HEADER:
+- Display font, uppercase, with a red rule/underline.
+- Progress readout right-aligned in the mono font.
+
+FILTER PILLS:
+- Rounded-full buttons, outlined/transparent by default, filled red
+  when active.
+
+SEARCH:
+- Icon-triggered expanding field (IMDb-style) rather than a
+  permanently open bar, to keep the header calm.
+
+============================================================
+6. INTERACTIONS & MICRO-ANIMATIONS
+============================================================
+- Hover transitions: 150-200ms ease-out on cards and buttons.
+- Modal open/close: 250-300ms fade plus a slight scale/slide.
+- Marking a movie watched: quick, satisfying feedback — checkmark
+  draws in, card border shifts to the "watched" green, poster
+  saturation animates up to 100%. Keep it subtle, not gimmicky (no
+  confetti).
+- Progress bars animate their fill rather than snapping instantly.
+- The sticky filter bar gains a subtle shadow once the page is
+  scrolled, to separate it from content beneath.
+
+============================================================
+7. ICONOGRAPHY
+============================================================
+- Simple, consistent line-icon set (Lucide or Feather style — both
+  free/open-source).
+- Check for watched, eye or play for quick-info/preview, magnifying
+  glass for search, sliders for filters, grid/list/rows glyphs for
+  the view-density toggle.
+- Avoid heavily detailed or skeuomorphic icons — thin-stroke and
+  quiet, so posters stay the visual focus.
+
+============================================================
+8. RESPONSIVE / MOBILE
+============================================================
+- Header collapses to logo + hamburger + search icon.
+- Filter pills become a horizontally scrollable row.
+- Card grid: 2 columns on mobile, 3-4 on tablet, 5-6 on desktop.
+- Hero section height reduces on mobile (~40vh vs ~65vh desktop);
+  CTA button becomes full-width.
+- Detail view becomes a full-screen slide-up sheet instead of a
+  centered modal.
+
+============================================================
+9. ACCESSIBILITY NOTES
+============================================================
+- Confirm text/background contrast meets WCAG AA (the off-white on
+  near-black pairing above comfortably does; double-check red-on-dark
+  and gold-on-dark button text specifically).
+- Don't rely on color alone for watched/unwatched — always pair the
+  color with an icon and/or text label.
+- Visible focus states (a 2px gold or red outline) on every
+  interactive element for keyboard navigation.
+- Alt text on every poster image (movie title at minimum).
+
+============================================================
+10. STARTER CSS VARIABLES
+============================================================
+:root {
+  /* Backgrounds */
+  --bg-base: #0b0b0d;
+  --bg-surface: #18181b;
+  --bg-surface-hover: #202024;
+  --border-subtle: #2a2a2e;
+
+  /* Accents (brand-inspired, not exact) */
+  --accent-red: #ed1d24;
+  --accent-red-dim: #7a1013;
+  --accent-gold: #f5c518;
+  --accent-gold-dim: #8a6f0e;
+
+  /* Status */
+  --status-watched: #3ddc84;
+  --status-next: #f5c518;
+  --status-unwatched: #4b4b52;
+
+  /* Text */
+  --text-primary: #f5f5f0;
+  --text-secondary: #a0a0a8;
+  --text-on-accent: #0b0b0d;
+
+  /* Typography */
+  --font-display: 'Anton', 'Archivo Black', sans-serif;
+  --font-body: 'Inter', 'Roboto', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Space Mono', monospace;
+
+  /* Shape & elevation */
+  --radius-card: 8px;
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-glow-red: 0 0 24px rgba(237, 29, 36, 0.35);
+}
+
+============================================================
+WHAT I OBSERVED ON EACH SITE (for reference/rationale)
+============================================================
+Marvel.com/movies:
+- Full-bleed hero image of the current tentpole release, dark
+  overlay for text legibility.
+- Horizontal row of newest/upcoming releases at the top (poster +
+  title + date).
+- Large promo module for Disney+ with big background art.
+- News section styled as article cards with category tags, paginated.
+- Main grid sorted newest-to-oldest, poster + title + year only —
+  kept intentionally simple.
+- MCU films kept in a visually distinct grid from non-MCU Marvel
+  films ("Other Movies") — a good precedent for your Phase/Saga
+  groupings.
+
+IMDb.com:
+- Signature yellow/black/white brand system (#F5C518 official gold).
+- Star-based rating badge, color-coded by whose rating it is
+  (yellow = community, blue = your own, green = another user's).
+- Chart/List pages offer three density views: Detailed, Grid, and
+  Compact.
+- An "i" icon opens a quick-info popup with synopsis, rating, cast,
+  trailer, and a one-click "add to watchlist" — without leaving the
+  page.
+- Dense but organized metadata rows (genre, runtime, year) rather
+  than heavy imagery per row.
