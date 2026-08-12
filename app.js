@@ -346,7 +346,7 @@ class MCUApp {
     this.activeFilter = 'all';
     this.searchQuery = '';
     this.searchTimeout = null;
-    this.activeSaga = 'infinity'; // Default saga tab
+    this.activeTab = 'phase-1'; // Default tab
     this.completedPhases = new Set();
     this.render();
     this.setupScrollListener();
@@ -356,6 +356,12 @@ class MCUApp {
     window.addEventListener('scroll', () => {
       const toolbar = document.getElementById('toolbar');
       if (toolbar) toolbar.classList.toggle('scrolled', window.scrollY > 0);
+    });
+    
+    // Close dropdown on outside click
+    window.addEventListener('click', () => {
+      const menu = document.getElementById('phase-menu');
+      if (menu) menu.classList.remove('show');
     });
   }
 
@@ -448,22 +454,38 @@ class MCUApp {
   }
 
   renderTabs() {
+    const allPhases = [];
+    MCU_DATA.sagas.forEach(saga => {
+      saga.phases.forEach(phase => {
+        allPhases.push(phase);
+      });
+    });
+
+    const activePhaseName = allPhases.find(p => p.id === this.activeTab)?.name || 'Select Phase';
+
     return `
-      <div class="tabs-wrapper">
-        <div class="tabs-container">
-          ${MCU_DATA.sagas.map(saga => `
-            <button class="tab-btn ${this.activeSaga === saga.id ? 'active' : ''}" data-saga="${saga.id}">
-              <span class="tab-icon">${saga.icon}</span>
-              ${saga.name}
-            </button>
-          `).join('')}
+      <div class="phase-dropdown-wrapper">
+        <div class="phase-dropdown" onclick="event.stopPropagation(); document.getElementById('phase-menu').classList.toggle('show')">
+          <button class="phase-dropdown-btn">
+            <span>${activePhaseName}</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="phase-dropdown-menu" id="phase-menu">
+            ${allPhases.map(phase => `
+              <button class="dropdown-item ${this.activeTab === phase.id ? 'active' : ''}" onclick="app.setActiveTab('${phase.id}')">
+                ${phase.name}
+              </button>
+            `).join('')}
+          </div>
         </div>
       </div>
     `;
   }
 
-  setActiveSaga(sagaId) {
-    this.activeSaga = sagaId;
+  setActiveTab(tabId) {
+    this.activeTab = tabId;
     this.render();
   }
 
@@ -482,8 +504,18 @@ class MCUApp {
       `).join('');
     }
 
-    const activeSagaData = MCU_DATA.sagas.find(s => s.id === this.activeSaga);
-    if (!activeSagaData) return '';
+    let activePhaseData = null;
+    let activeSagaData = null;
+    MCU_DATA.sagas.forEach(saga => {
+      saga.phases.forEach(phase => {
+        if (phase.id === this.activeTab) {
+          activePhaseData = phase;
+          activeSagaData = saga;
+        }
+      });
+    });
+
+    if (!activePhaseData) return '';
 
     return `
       <section class="saga-section" data-saga="${activeSagaData.id}">
@@ -493,7 +525,7 @@ class MCUApp {
           <div class="saga-line"></div>
         </div>
         <p class="saga-subtitle">${activeSagaData.years}</p>
-        ${activeSagaData.phases.map(phase => this.renderPhase(phase)).join('')}
+        ${this.renderPhase(activePhaseData)}
       </section>
     `;
   }
@@ -640,7 +672,7 @@ class MCUApp {
 
       const tabBtn = e.target.closest('.tab-btn');
       if (tabBtn) {
-        this.setActiveSaga(tabBtn.dataset.saga);
+        this.setActiveTab(tabBtn.dataset.tab);
         return;
       }
 
