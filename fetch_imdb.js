@@ -111,13 +111,43 @@ async function fetchImdbPoster(title) {
     const data = JSON.parse(jsonStr);
     
     if (data.d && data.d.length > 0) {
+      let bestItem = null;
+      
+      // Try to find exact title match and is movie/tv
       for (const item of data.d) {
-        if (item.i && item.i[0]) {
-          let imgUrl = item.i[0];
-          // Get higher resolution by replacing the thumbnail modifiers
-          imgUrl = imgUrl.replace(/_V1_.*\.jpg$/, '_V1_FMjpg_UX600_.jpg');
-          return imgUrl;
+        if (item.i && item.i[0] && item.l) {
+          const l = item.l.toLowerCase();
+          const t = title.toLowerCase();
+          if ((l === t || l === "marvel's " + t || "marvel's " + l === t) && (item.q === 'feature' || item.q === 'TV series' || item.q === 'TV mini-series')) {
+            bestItem = item;
+            break;
+          }
         }
+      }
+      
+      // Fallback: just find a feature or TV series
+      if (!bestItem) {
+        for (const item of data.d) {
+          if (item.i && item.i[0] && (item.q === 'feature' || item.q === 'TV series' || item.q === 'TV mini-series')) {
+            bestItem = item;
+            break;
+          }
+        }
+      }
+      
+      // Fallback 2: first item with an image
+      if (!bestItem) {
+        bestItem = data.d.find(item => item.i && item.i[0] && item.i[0].indexOf('nopicture') === -1);
+      }
+      
+      if (bestItem) {
+        let imgUrl = bestItem.i[0];
+        imgUrl = imgUrl.replace(/_V1_.*\\.jpg$/, '_V1_FMjpg_UX600_.jpg');
+        
+        // Prevent default IMDB generic placeholders
+        if (imgUrl.includes('MV5BMjJkZjE4NjMtNWVjMC00YzIzLWIwYmUtNTBmY2Q0OTQxYTVjXkEyXkFqcGc')) return null;
+        
+        return imgUrl;
       }
     }
     return null;
