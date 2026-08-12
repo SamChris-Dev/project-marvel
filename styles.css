@@ -29,7 +29,13 @@
 /* ---- Global ---- */
 html, body {
   overflow-x: hidden;
-  max-width: 100vw;
+  max-width: 100%;
+  width: 100%;
+}
+
+#app {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -793,13 +799,17 @@ body {
   align-items: center;
   gap: 12px;
   min-width: 280px;
-  transform: translateX(120%);
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   pointer-events: auto;
 }
 
-.toast.show { transform: translateX(0); }
+.toast.show { 
+  opacity: 1;
+  transform: translateY(0); 
+}
 .toast-icon { font-size: 1.5rem; }
 .toast-message { font-size: 0.9rem; color: var(--text-primary); font-weight: 500; }
 
@@ -870,13 +880,20 @@ body {
   }
   .stat-number { font-size: 1.8rem; }
   
-  .toolbar-inner { flex-direction: column; align-items: stretch; }
+  .toolbar-inner { 
+    flex-direction: column; 
+    align-items: stretch; 
+    width: 100%;
+    min-width: 0;
+  }
   .filter-group { 
     overflow-x: auto; 
     flex-wrap: nowrap; 
     padding-bottom: 8px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none; /* Firefox */
+    width: 100%;
+    max-width: 100vw;
   }
   .filter-group::-webkit-scrollbar { 
     display: none; /* Safari and Chrome */
