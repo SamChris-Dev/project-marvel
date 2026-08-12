@@ -346,7 +346,7 @@ class MCUApp {
     this.activeFilter = 'all';
     this.searchQuery = '';
     this.searchTimeout = null;
-    this.activeTab = 'phase-1'; // Default tab
+    this.activeSaga = 'infinity'; // Default saga tab
     this.completedPhases = new Set();
     this.render();
     this.setupScrollListener();
@@ -448,19 +448,13 @@ class MCUApp {
   }
 
   renderTabs() {
-    const allPhases = [];
-    MCU_DATA.sagas.forEach(saga => {
-      saga.phases.forEach(phase => {
-        allPhases.push(phase);
-      });
-    });
-
     return `
       <div class="tabs-wrapper">
         <div class="tabs-container">
-          ${allPhases.map(phase => `
-            <button class="tab-btn ${this.activeTab === phase.id ? 'active' : ''}" data-tab="${phase.id}">
-              ${phase.name}
+          ${MCU_DATA.sagas.map(saga => `
+            <button class="tab-btn ${this.activeSaga === saga.id ? 'active' : ''}" data-saga="${saga.id}">
+              <span class="tab-icon">${saga.icon}</span>
+              ${saga.name}
             </button>
           `).join('')}
         </div>
@@ -468,8 +462,8 @@ class MCUApp {
     `;
   }
 
-  setActiveTab(tabId) {
-    this.activeTab = tabId;
+  setActiveSaga(sagaId) {
+    this.activeSaga = sagaId;
     this.render();
   }
 
@@ -488,18 +482,8 @@ class MCUApp {
       `).join('');
     }
 
-    let activePhaseData = null;
-    let activeSagaData = null;
-    MCU_DATA.sagas.forEach(saga => {
-      saga.phases.forEach(phase => {
-        if (phase.id === this.activeTab) {
-          activePhaseData = phase;
-          activeSagaData = saga;
-        }
-      });
-    });
-
-    if (!activePhaseData) return '';
+    const activeSagaData = MCU_DATA.sagas.find(s => s.id === this.activeSaga);
+    if (!activeSagaData) return '';
 
     return `
       <section class="saga-section" data-saga="${activeSagaData.id}">
@@ -509,7 +493,7 @@ class MCUApp {
           <div class="saga-line"></div>
         </div>
         <p class="saga-subtitle">${activeSagaData.years}</p>
-        ${this.renderPhase(activePhaseData)}
+        ${activeSagaData.phases.map(phase => this.renderPhase(phase)).join('')}
       </section>
     `;
   }
@@ -656,7 +640,7 @@ class MCUApp {
 
       const tabBtn = e.target.closest('.tab-btn');
       if (tabBtn) {
-        this.setActiveTab(tabBtn.dataset.tab);
+        this.setActiveSaga(tabBtn.dataset.saga);
         return;
       }
 
