@@ -355,14 +355,11 @@ class MCUApp {
     const app = document.getElementById('app');
     app.innerHTML =
       this.renderHero() +
-      this.renderLegend() +
       this.renderToolbar() +
       '<div class="main-content">' +
         this.renderContent() +
       '</div>' +
-      this.renderFastTrack() +
-      this.renderFooter() +
-      this.renderToastContainer();
+      this.renderFooter();
     this.bindEvents();
     this.updateAllProgress();
     this.initCompletedPhases();
@@ -371,23 +368,39 @@ class MCUApp {
   renderHero() {
     const stats = this.tracker.getOverallStats();
     const pct = stats.totalEntries ? Math.round((stats.watchedEntries / stats.totalEntries) * 100) : 0;
+    // Find the next unwatched chronological entry for the hero
+    let upNext = null;
+    for (const saga of MCU_DATA.sagas) {
+      if (upNext) break;
+      for (const phase of saga.phases) {
+        if (upNext) break;
+        for (const entry of phase.entries) {
+          if (!this.tracker.isWatched(`entry-${entry.id}`)) {
+            upNext = entry;
+            break;
+          }
+        }
+      }
+    }
+    const heroTitle = upNext ? upNext.title : "Avengers: Doomsday";
+    const heroStatus = upNext ? `Next up in ${upNext.year}` : "All Caught Up";
+    
     return `
-    <section class="hero-section">
+    <section class="hero-section" style="background-image: url('images/hero_banner.jpg?v=3');">
       <div class="hero-content">
-        <h1 class="hero-title">MCU Complete Guide</h1>
-        <p class="hero-subtitle">Your Road to Avengers: Doomsday</p>
-        <span class="hero-badge">🎬 ${stats.mcuEntries} MCU Projects · ⚡ ${stats.nonMcuEntries} Related Titles</span>
-        <div class="stats-row">
-          <div class="stat-card"><span class="stat-number" id="stat-entries">${stats.watchedEntries}</span><span class="stat-label">Watched</span></div>
-          <div class="stat-card"><span class="stat-number" id="stat-episodes">${stats.watchedEpisodes}</span><span class="stat-label">Episodes</span></div>
-          <div class="stat-card"><span class="stat-number" id="stat-pct">${pct}%</span><span class="stat-label">Complete</span></div>
-        </div>
-        <div class="progress-section">
-          <div class="progress-bar-container"><div class="progress-fill" id="progress-fill" style="width:${pct}%"></div></div>
-          <p class="progress-text"><span class="progress-percentage" id="progress-pct">${stats.watchedEntries}/${stats.totalEntries}</span> projects completed</p>
-        </div>
+        <span class="hero-status">${heroStatus}</span>
+        <h1 class="hero-title">${heroTitle}</h1>
+        <button class="hero-cta" onclick="app.tracker.toggle('entry-${upNext ? upNext.id : 0}'); app.render();">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Mark as Watched
+        </button>
       </div>
-    </section>`;
+    </section>
+    <div class="overall-progress-container">
+      <div class="overall-progress-bar">
+        <div class="overall-progress-fill" style="width: ${pct}%"></div>
+      </div>
+    </div>`;
   }
 
   renderLegend() {
@@ -401,19 +414,25 @@ class MCUApp {
   }
 
   renderToolbar() {
+    const stats = this.tracker.getOverallStats();
     return `
     <nav class="toolbar" id="toolbar">
       <div class="toolbar-inner">
+        <div class="site-logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--accent-red)"><path d="M12 2L2 22h20L12 2z"/></svg>
+          MCU<span>Tracker</span>
+        </div>
         <div class="filter-group">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="film">🎬 Films</button>
-          <button class="filter-btn" data-filter="series">📺 Series</button>
-          <button class="filter-btn" data-filter="animated">✨ Animated</button>
-          <button class="filter-btn" data-filter="non-mcu">⚡ Non-MCU</button>
+          <button class="filter-btn ${this.activeFilter === 'all' ? 'active' : ''}" data-filter="all">All</button>
+          <button class="filter-btn ${this.activeFilter === 'film' ? 'active' : ''}" data-filter="film">Films</button>
+          <button class="filter-btn ${this.activeFilter === 'series' ? 'active' : ''}" data-filter="series">Series</button>
         </div>
         <div class="search-wrapper">
-          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" class="search-input" id="search-input" placeholder="Search titles...">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" class="search-input" id="search-input" placeholder="Search movies, series..." value="${this.searchQuery}">
+        </div>
+        <div class="header-progress">
+          ${stats.watchedEntries} / ${stats.totalEntries} watched
         </div>
       </div>
     </nav>`;
@@ -434,28 +453,15 @@ class MCUApp {
   }
 
   renderPhase(phase) {
-    const phaseImages = {
-      'phase-1': { img: 'images/phase_1.jpg?v=3', sub: 'Where It All Began' },
-      'phase-2': { img: 'images/phase_2.jpg?v=3', sub: 'The Age of Ultron' },
-      'phase-3': { img: 'images/phase_3.jpg?v=3', sub: 'The Infinity Saga Finale' },
-      'phase-4': { img: 'images/phase_4.jpg?v=3', sub: 'The Multiverse Cracks Open' },
-      'phase-5': { img: 'images/phase_5.jpg?v=3', sub: 'Worlds Collide' },
-      'phase-6': { img: 'images/phase_6.jpg?v=3', sub: 'The Road to Doomsday' }
-    };
-    const banner = phaseImages[phase.id];
     let idx = 0;
+    const stats = { total: phase.entries.length, watched: 0 };
+    phase.entries.forEach(e => { if (this.tracker.isWatched(`entry-${e.id}`)) stats.watched++; });
+    
     return `
       <div class="phase-section" data-phase="${phase.id}">
-        ${banner ? `
-        <div class="phase-banner">
-          <img src="${banner.img}" alt="${phase.name}" loading="lazy">
-          <div class="phase-banner-overlay">
-            <div class="phase-banner-text">${phase.name}<span>${banner.sub}</span></div>
-          </div>
-        </div>` : ''}
         <div class="phase-header">
-          <h3 class="phase-title">${phase.name} <span class="phase-years">${phase.years}</span></h3>
-          <span class="phase-progress-text" id="progress-${phase.id}"></span>
+          <h3 class="phase-title">${phase.name}</h3>
+          <span class="phase-progress-text"><span>${stats.watched}</span> / ${stats.total} watched</span>
         </div>
         <div class="entries-grid">
           ${phase.entries.map(entry => {
@@ -468,73 +474,56 @@ class MCUApp {
   }
 
   renderEntry(entry, index) {
-    const watched = this.tracker.isWatched(`entry-${entry.id}`);
-    const delay = Math.min(index * 0.04, 0.4);
-    const typeLabels = { film: '🎬 Film', series: '📺 Series', animated: '✨ Animated', shorts: '📺 Shorts' };
-    const verdictLabels = { 'must-watch': '🟢 Must Watch', essential: '🟢 Essential', recommended: '🟡 Recommended', optional: '🔵 Optional', skip: '🔴 Skip' };
-    const typeLabel = typeLabels[entry.type] || entry.type;
-    const verdictLabel = verdictLabels[entry.verdict] || entry.verdict;
-    const verdictClass = entry.verdict === 'essential' ? 'must-watch' : entry.verdict;
-    const checkSvg = '<svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
-
-    let episodesHtml = '';
-    if (entry.episodes) {
-      const prog = this.tracker.getEntryProgress(entry.id, entry.episodes);
-      const epPct = prog.total ? Math.round((prog.watched / prog.total) * 100) : 0;
-      episodesHtml = `
-        <div class="episodes-section">
-          <button class="episodes-toggle" data-entry-id="${entry.id}">
-            <span class="ep-count-text">${entry.episodes.length} Episodes</span>
-            <div class="ep-progress-mini"><div class="ep-progress-mini-fill" id="ep-bar-${entry.id}" style="width:${epPct}%"></div></div>
-            <span class="ep-progress-text" id="ep-text-${entry.id}">${prog.watched}/${prog.total}</span>
-            <span class="toggle-chevron">▸</span>
-          </button>
-          <div class="episodes-list" id="episodes-${entry.id}">
-            ${entry.episodes.map(ep => {
-              const epWatched = this.tracker.isWatched(`ep-${entry.id}-${ep.code}`);
-              return `
-              <label class="episode-item${epWatched ? ' watched' : ''}" data-ep-id="ep-${entry.id}-${ep.code}">
-                <span class="ep-checkbox-wrapper">
-                  <input type="checkbox" class="ep-check-input" ${epWatched ? 'checked' : ''}>
-                  <span class="ep-check-box${epWatched ? ' checked' : ''}">
-                    <svg class="ep-check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  </span>
-                </span>
-                <span class="ep-label">${ep.code}: "${ep.title}"</span>
-              </label>`;
-            }).join('')}
-          </div>
-        </div>`;
+    const isWatched = this.tracker.isWatched(`entry-${entry.id}`);
+    
+    // Determine if it is the "up next" entry
+    let isUpNext = false;
+    let foundUnwatched = false;
+    for (const s of MCU_DATA.sagas) {
+      if (foundUnwatched) break;
+      for (const p of s.phases) {
+        if (foundUnwatched) break;
+        for (const e of p.entries) {
+          if (!this.tracker.isWatched(`entry-${e.id}`)) {
+            if (e.id === entry.id) isUpNext = true;
+            foundUnwatched = true;
+            break;
+          }
+        }
+      }
     }
 
-    const nonMcuBadge = entry.nonMcu ? '<span class="badge badge-non-mcu">NON-MCU</span>' : '';
-
+    const stateClass = isWatched ? 'watched' : (isUpNext ? 'up-next' : 'unwatched');
+    
+    // Generate a pseudo-random gradient based on the entry ID for variety
+    const hue1 = (entry.id * 137) % 360;
+    const hue2 = (entry.id * 271) % 360;
+    const gradient = `linear-gradient(135deg, hsl(${hue1}, 40%, 15%), hsl(${hue2}, 50%, 10%))`;
+    
     return `
-      <div class="entry-card${watched ? ' watched' : ''}" data-id="${entry.id}" data-type="${entry.type}" data-verdict="${entry.verdict}" data-non-mcu="${!!entry.nonMcu}" style="--delay:${delay}s">
-        <div class="card-content">
-          <div class="card-header">
-            <div class="card-checkbox-area">
-              <label class="checkbox-wrapper">
-                <input type="checkbox" class="check-input" data-entry-id="${entry.id}" ${watched ? 'checked' : ''}>
-                <span class="check-box${watched ? ' checked' : ''}">${checkSvg}</span>
-              </label>
-            </div>
-            <div class="card-info">
-              <div class="card-title-row">
-                <span class="card-title-text">${entry.title}</span>
-                <span class="card-year">(${entry.year})</span>
-              </div>
-              <div class="card-badges">
-                ${nonMcuBadge}
-                <span class="badge badge-${entry.type}">${typeLabel}</span>
-                <span class="badge badge-${verdictClass}">${verdictLabel}</span>
-              </div>
-            </div>
+      <div class="entry-card ${stateClass}" data-id="${entry.id}">
+        <div class="poster-container" onclick="app.openModal(${entry.id})" style="background: ${gradient};">
+          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:16px; text-align:center; opacity:0.6;">
+            <span style="font-family: var(--font-display); font-size: 1.2rem; color: #fff; text-transform: uppercase; letter-spacing: 0.05em; line-height: 1.1;">${entry.title}</span>
           </div>
-          <p class="card-desc">${entry.description}</p>
-          ${episodesHtml}
+          <div class="status-badge">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <div class="poster-overlay">
+            <button class="action-btn" onclick="event.stopPropagation(); app.tracker.toggle('entry-${entry.id}'); app.render();" title="Mark Watched">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </button>
+            <button class="action-btn" onclick="event.stopPropagation(); app.openModal(${entry.id})" title="Quick Info">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </button>
+          </div>
         </div>
-      </div>`;
+        <div class="card-meta-container">
+          <h4 class="card-title">${entry.title}</h4>
+          <span class="card-meta-line">${entry.year} · ${entry.type.toUpperCase()}</span>
+        </div>
+      </div>
+    `;
   }
 
   renderFastTrack() {
@@ -757,6 +746,55 @@ class MCUApp {
         });
       });
     });
+  }
+
+  
+  openModal(entryId) {
+    let entry = null;
+    MCU_DATA.sagas.forEach(s => s.phases.forEach(p => p.entries.forEach(e => { if(e.id === entryId) entry = e; })));
+    if (!entry) return;
+    
+    const isWatched = this.tracker.isWatched(`entry-${entry.id}`);
+    const fallbackImg = `images/phase_4.jpg?v=3`;
+    
+    const modalHtml = `
+      <div class="modal-overlay active" id="modal-overlay" onclick="if(event.target.id==='modal-overlay') app.closeModal()">
+        <div class="modal-content">
+          <button class="modal-close" onclick="app.closeModal()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          </button>
+          <div class="modal-backdrop" style="background-image: url('${fallbackImg}')"></div>
+          <div class="modal-body">
+            <h2 class="modal-title">${entry.title}</h2>
+            <div class="modal-meta">
+              <span>📅 ${entry.year}</span>
+              <span>🎬 ${entry.type.toUpperCase()}</span>
+            </div>
+            <p class="modal-desc">${entry.description}</p>
+            
+            <div class="modal-actions">
+              <button class="btn-primary ${isWatched ? 'watched' : ''}" onclick="app.tracker.toggle('entry-${entry.id}'); app.closeModal(); app.render();">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                ${isWatched ? 'Watched' : 'Mark as Watched'}
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+    
+    let modalContainer = document.getElementById('modal-container');
+    if (!modalContainer) {
+      modalContainer = document.createElement('div');
+      modalContainer.id = 'modal-container';
+      document.body.appendChild(modalContainer);
+    }
+    modalContainer.innerHTML = modalHtml;
+  }
+
+  closeModal() {
+    const modalContainer = document.getElementById('modal-container');
+    if (modalContainer) modalContainer.innerHTML = '';
   }
 
   initCompletedPhases() {
