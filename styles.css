@@ -5,16 +5,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
-  --bg-primary: #06060e;
-  --bg-secondary: #0c0c18;
-  --bg-card: rgba(16, 16, 30, 0.9);
-  --bg-card-hover: rgba(24, 24, 44, 0.95);
-  --surface: #14142a;
+  --bg-primary: #000000;
+  --bg-secondary: #121212;
+  --bg-card: #1f1f1f;
+  --bg-card-hover: #2b2b2b;
+  --surface: #1f1f1f;
   --marvel-red: #e23636;
   --marvel-red-dark: #b82020;
   --marvel-red-glow: rgba(226, 54, 54, 0.25);
-  --marvel-gold: #d4a843;
-  --marvel-gold-dim: rgba(212, 168, 67, 0.15);
+  --marvel-gold: #f5c518;
+  --marvel-gold-dim: rgba(245, 197, 24, 0.15);
   --multiverse-purple: #7c3aed;
   --multiverse-blue: #3b82f6;
   --text-primary: #eaeaf2;
@@ -28,9 +28,9 @@
   --verdict-optional: #42a5f5;
   --verdict-skip: #ef5350;
   --verdict-essential: #00e676;
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+  --radius-sm: 4px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
   --shadow-card: 0 4px 24px rgba(0,0,0,0.3);
   --shadow-card-hover: 0 12px 40px rgba(0,0,0,0.5);
   --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
@@ -73,8 +73,8 @@ body {
   align-items: center;
   justify-content: center;
   background:
-    linear-gradient(180deg, rgba(6,6,14,0.3) 0%, rgba(6,6,14,0.65) 50%, var(--bg-primary) 100%),
-    url('images/hero_banner.jpg?v=2') center/cover no-repeat;
+    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.85) 60%, var(--bg-primary) 100%),
+    url('images/hero_banner.jpg?v=3') center/cover no-repeat;
   padding: 100px 24px 70px;
   position: relative;
   overflow: hidden;
@@ -122,8 +122,7 @@ body {
   font-size: 0.85rem;
   font-weight: 400;
   margin-top: 20px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  -webkit-
 }
 
 /* ---- Stats Row ---- */
@@ -136,9 +135,8 @@ body {
 }
 
 .stat-card {
-  background: rgba(255,255,255,0.03);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  background: #1f1f1f;
+  -webkit-
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 20px 32px;
@@ -233,9 +231,8 @@ body {
   justify-content: center;
   gap: 20px;
   padding: 14px 24px;
-  background: rgba(12,12,24,0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #121212;
+  -webkit-
   border-bottom: 1px solid var(--border);
   flex-wrap: wrap;
 }
@@ -267,15 +264,14 @@ body {
   top: 0;
   z-index: 100;
   padding: 12px 24px;
-  background: rgba(6, 6, 14, 0.7);
-  backdrop-filter: blur(24px) saturate(1.5);
-  -webkit-backdrop-filter: blur(24px) saturate(1.5);
+  background: #000000;
+  -webkit-
   border-bottom: 1px solid var(--border);
   transition: all 0.3s ease;
 }
 
 .toolbar.scrolled {
-  background: rgba(6, 6, 14, 0.92);
+  background: #000000;
   box-shadow: 0 4px 30px rgba(0,0,0,0.5);
 }
 
@@ -650,7 +646,7 @@ body {
   align-items: center;
   gap: 10px;
   width: 100%;
-  background: rgba(255, 255, 255, 0.02);
+  background: #121212;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 10px 14px;
@@ -714,14 +710,14 @@ body {
   align-items: center;
   gap: 10px;
   padding: 7px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid #121212;
   font-size: 0.8rem;
   color: var(--text-secondary);
   transition: all 0.2s ease;
 }
 
 .episode-item:last-child { border-bottom: none; }
-.episode-item:hover { background: rgba(255, 255, 255, 0.02); }
+.episode-item:hover { background: #121212; }
 
 .episode-item.watched .ep-label {
   color: var(--text-dim);
@@ -881,8 +877,7 @@ body {
   transition: all 0.4s var(--transition-smooth);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   pointer-events: auto;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  -webkit-
 }
 
 .toast.show {
