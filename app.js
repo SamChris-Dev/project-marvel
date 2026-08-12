@@ -15,7 +15,7 @@ const MCU_DATA = {
             { id: 3, title: 'Iron Man 2', poster: 'https://m.media-amazon.com/images/M/MV5BYWYyOGQzOGYtMGQ1My00ZWYxLTgzZjktZWYzN2IwYjkxYzM0XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2010', type: 'film', verdict: 'skip', description: 'Tony Stark faces government pressure, a rival inventor, and the consequences of revealing his identity.', episodes: null },
             { id: 4, title: 'Thor', poster: 'https://m.media-amazon.com/images/M/MV5BNjRhNGZjZjEtYTQzYS00OWUxLThjNGEtMTIwMTE2ZDFlZTZkXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2011', type: 'film', verdict: 'optional', description: 'The arrogant God of Thunder is banished to Earth, where he learns humility and discovers his true heroic potential.', episodes: null },
             { id: 5, title: 'Captain America: The First Avenger', poster: 'https://m.media-amazon.com/images/M/MV5BNzUyM2YyY2MtNzNlMS00MWU5LTgxNjAtNzZlNmI2NjU2NDZlXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2011', type: 'film', verdict: 'recommended', description: 'A frail soldier is transformed into a super-soldier during WWII to fight the villainous Hydra organization.', episodes: null },
-            { id: 6, title: 'Marvel\'s The Avengers', year: '2012', type: 'film', verdict: 'must-watch', description: 'Earth\'s mightiest heroes assemble for the first time to stop Loki and his alien army from conquering New York.', episodes: null }
+            { id: 6, title: 'Marvel\'s The Avengers', poster: 'https://m.media-amazon.com/images/M/MV5BNGE0YTVjNzUtNzJjOS00NGNlLTgxMzctZTY4YTE1Y2Y1ZTU4XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2012', type: 'film', verdict: 'must-watch', description: 'Earth\'s mightiest heroes assemble for the first time to stop Loki and his alien army from conquering New York.', episodes: null }
           ]
         },
         {
@@ -60,10 +60,10 @@ const MCU_DATA = {
               { code: 'S1E1', title: 'New World Order' }, { code: 'S1E2', title: 'The Star-Spangled Man' }, { code: 'S1E3', title: 'Power Broker' }, { code: 'S1E4', title: 'The Whole World Is Watching' }, { code: 'S1E5', title: 'Truth' }, { code: 'S1E6', title: 'One World, One People' }
             ]},
             { id: 26, title: 'Black Widow', poster: 'https://m.media-amazon.com/images/M/MV5BZTMyZTA0ZTItYjY3Yi00ODNjLWExYTgtYzgxZTk0NTg0Y2FlXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2021', type: 'film', verdict: 'optional', description: 'Natasha Romanoff confronts her past as a spy and reconnects with the broken family she left behind.', episodes: null },
-            { id: 27, title: 'Loki — Season 1', year: '2021', type: 'series', verdict: 'must-watch', description: 'The God of Mischief is recruited by the TVA and discovers the secret architecture of the multiverse.', episodes: [
+            { id: 27, title: 'Loki — Season 1', poster: 'https://m.media-amazon.com/images/M/MV5BYzA2YjM2ZWQtYTZhMS00OTI3LTlhYzQtZjBiZWZkMDdlNjA5XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2021', type: 'series', verdict: 'must-watch', description: 'The God of Mischief is recruited by the TVA and discovers the secret architecture of the multiverse.', episodes: [
               { code: 'S1E1', title: 'Glorious Purpose' }, { code: 'S1E2', title: 'The Variant' }, { code: 'S1E3', title: 'Lamentis' }, { code: 'S1E4', title: 'The Nexus Event' }, { code: 'S1E5', title: 'Journey Into Mystery' }, { code: 'S1E6', title: 'For All Time. Always.' }
             ]},
-            { id: 28, title: 'What If...? — Season 1', year: '2021', type: 'animated', verdict: 'skip', description: 'Animated anthology exploring alternate realities where pivotal MCU moments happened differently.', episodes: [
+            { id: 28, title: 'What If...? — Season 1', poster: 'https://m.media-amazon.com/images/M/MV5BYWFiOTcwNzItMTg5Mi00ZTU4LThkZWYtYWNmZWQ1ODE5ZTVmXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2021', type: 'animated', verdict: 'skip', description: 'Animated anthology exploring alternate realities where pivotal MCU moments happened differently.', episodes: [
               { code: 'S1E1', title: 'What If... Captain Carter Were the First Avenger?' }, { code: 'S1E2', title: 'What If... T\'Challa Became a Star-Lord?' }, { code: 'S1E3', title: 'What If... the World Lost Its Mightiest Heroes?' }, { code: 'S1E4', title: 'What If... Doctor Strange Lost His Heart?' }, { code: 'S1E5', title: 'What If... Zombies?!' }, { code: 'S1E6', title: 'What If... Killmonger Rescued Tony Stark?' }, { code: 'S1E7', title: 'What If... Thor Were an Only Child?' }, { code: 'S1E8', title: 'What If... Ultron Won?' }, { code: 'S1E9', title: 'What If... the Watcher Broke His Oath?' }
             ]},
             { id: 29, title: 'Hawkeye', poster: 'https://m.media-amazon.com/images/M/MV5BOGU5ZDBlOTAtOTZmYS00MWE0LTg0NzktNDcxZGJhN2FhZmM2XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2021', type: 'series', verdict: 'optional', description: 'Clint Barton tries to get home for Christmas but gets pulled into a conspiracy alongside Kate Bishop.', episodes: [
@@ -83,7 +83,7 @@ const MCU_DATA = {
             { id: 37, title: 'She-Hulk: Attorney at Law', poster: 'https://m.media-amazon.com/images/M/MV5BNjg4ZTQ1MjctNzEyMS00YWM2LTk1ZTQtNDU3ZDJjNjhhMDhkXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2022', type: 'series', verdict: 'skip', description: 'Lawyer Jennifer Walters navigates her career after gaining Hulk-like powers.', episodes: [
               { code: 'S1E1', title: 'A Normal Amount of Rage' }, { code: 'S1E2', title: 'Superhuman Law' }, { code: 'S1E3', title: 'The People vs. Emil Blonsky' }, { code: 'S1E4', title: 'Is This Not Real Magic?' }, { code: 'S1E5', title: 'Mean, Green, and Straight Poured into These Jeans' }, { code: 'S1E6', title: 'Just Jen' }, { code: 'S1E7', title: 'The Retreat' }, { code: 'S1E8', title: 'Ribbit and Rip It' }, { code: 'S1E9', title: 'Whose Show Is This?' }
             ]},
-            { id: 38, title: 'I Am Groot — Season 1', year: '2022', type: 'shorts', verdict: 'skip', description: 'Adorable animated shorts following Baby Groot\'s mischievous adventures.', episodes: [
+            { id: 38, title: 'I Am Groot — Season 1', poster: 'https://m.media-amazon.com/images/M/MV5BMzBlODMyZGQtN2QzOS00MDAzLWFjOGQtMGRjN2JmZWM0NWJkXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2022', type: 'shorts', verdict: 'skip', description: 'Adorable animated shorts following Baby Groot\'s mischievous adventures.', episodes: [
               { code: 'S1E1', title: 'Groot\'s First Steps' }, { code: 'S1E2', title: 'The Little Guy' }, { code: 'S1E3', title: 'Groot\'s Pursuit' }, { code: 'S1E4', title: 'Groot Takes a Bath' }, { code: 'S1E5', title: 'Magnum Opus' }
             ]},
             { id: 39, title: 'Black Panther: Wakanda Forever', poster: 'https://m.media-amazon.com/images/M/MV5BYWY5NDY1ZjItZDQxMy00MTAzLTgyOGQtNTQxYjFiMzZjMjUyXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2022', type: 'film', verdict: 'recommended', description: 'Wakanda mourns T\'Challa\'s death while fighting Namor and the undersea kingdom of Talokan.', episodes: null }
@@ -92,28 +92,28 @@ const MCU_DATA = {
         {
           id: 'phase-5', name: 'Phase Five', years: '2023–2025',
           entries: [
-            { id: 40, title: 'Ant-Man and the Wasp: Quantumania', poster: 'https://m.media-amazon.com/images/M/MV5BMThkYWY5ZjQtYjJlMS00MDFmLWFkYzEtODEzZjg5YWFmMGY4XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2023', type: 'film', verdict: 'optional', description: 'The heroes plunge into the Quantum Realm and encounter Kang the Conqueror.', episodes: null },
+            { id: 40, title: 'Ant-Man and the Wasp: Quantumania', poster: 'https://m.media-amazon.com/images/M/MV5BODZhNzlmOGItMWUyYS00Y2Q5LWFlNzMtM2I2NDI1NTQzNWM2XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2023', type: 'film', verdict: 'optional', description: 'The heroes plunge into the Quantum Realm and encounter Kang the Conqueror.', episodes: null },
             { id: 41, title: 'Secret Invasion', poster: 'https://m.media-amazon.com/images/M/MV5BNmYzYzA2NzMtOTVmMC00ZDY4LThlMDctZmUyN2NlMjQ2ODViXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2023', type: 'series', verdict: 'skip', description: 'Nick Fury uncovers a Skrull plot to infiltrate and conquer Earth from within.', episodes: [
               { code: 'S1E1', title: 'Resurrection' }, { code: 'S1E2', title: 'Promises' }, { code: 'S1E3', title: 'Betrayed' }, { code: 'S1E4', title: 'Beloved' }, { code: 'S1E5', title: 'Harvest' }, { code: 'S1E6', title: 'Home' }
             ]},
             { id: 42, title: 'Guardians of the Galaxy Vol. 3', poster: 'https://m.media-amazon.com/images/M/MV5BOTJhOTMxMmItZmE0Ny00MDc3LWEzOGEtOGFkMzY4MWYyZDQ0XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2023', type: 'film', verdict: 'optional', description: 'The team embarks on one final mission to save Rocket from the horrors of his past.', episodes: null },
-            { id: 43, title: 'Loki — Season 2', year: '2023', type: 'series', verdict: 'must-watch', description: 'Loki fights to save the multiverse itself, leading to a sacrifice that reshapes all realities.', episodes: [
+            { id: 43, title: 'Loki — Season 2', poster: 'https://m.media-amazon.com/images/M/MV5BYzA2YjM2ZWQtYTZhMS00OTI3LTlhYzQtZjBiZWZkMDdlNjA5XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2023', type: 'series', verdict: 'must-watch', description: 'Loki fights to save the multiverse itself, leading to a sacrifice that reshapes all realities.', episodes: [
               { code: 'S2E1', title: 'Ouroboros' }, { code: 'S2E2', title: 'Breaking Brad' }, { code: 'S2E3', title: '1893' }, { code: 'S2E4', title: 'Heart of the TVA' }, { code: 'S2E5', title: 'Science/Fiction' }, { code: 'S2E6', title: 'Glorious Purpose' }
             ]},
-            { id: 44, title: 'What If...? — Season 2', year: '2023', type: 'animated', verdict: 'skip', description: 'More alternate-reality adventures exploring \"what if\" scenarios across the multiverse.', episodes: [
+            { id: 44, title: 'What If...? — Season 2', poster: 'https://m.media-amazon.com/images/M/MV5BYWFiOTcwNzItMTg5Mi00ZTU4LThkZWYtYWNmZWQ1ODE5ZTVmXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2023', type: 'animated', verdict: 'skip', description: 'More alternate-reality adventures exploring \"what if\" scenarios across the multiverse.', episodes: [
               { code: 'S2E1', title: 'What If... Nebula Joined the Nova Corps?' }, { code: 'S2E2', title: 'What If... Peter Quill Attacked Earth\'s Mightiest Heroes?' }, { code: 'S2E3', title: 'What If... Happy Hogan Saved Christmas?' }, { code: 'S2E4', title: 'What If... Iron Man Crashed Into the Grandmaster?' }, { code: 'S2E5', title: 'What If... Captain Carter Fought the Hydra Stomper?' }, { code: 'S2E6', title: 'What If... Kahhori Reshaped the World?' }, { code: 'S2E7', title: 'What If... Hela Found the Ten Rings?' }, { code: 'S2E8', title: 'What If... the Avengers Assembled in 1602?' }, { code: 'S2E9', title: 'What If... Strange Supreme Intervened?' }
             ]},
             { id: 45, title: 'Echo', poster: 'https://m.media-amazon.com/images/M/MV5BOGFiYzI1ZDctM2U1Zi00ZWI5LWFiMmQtNGU0NTU5MTg3OWM3XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2024', type: 'series', verdict: 'skip', description: 'Maya Lopez reconnects with her roots while being pursued by Wilson Fisk\'s criminal empire.', episodes: [
               { code: 'S1E1', title: 'Chafa' }, { code: 'S1E2', title: 'Lowak' }, { code: 'S1E3', title: 'Tuklo' }, { code: 'S1E4', title: 'Taloa' }, { code: 'S1E5', title: 'Maya' }
             ]},
-            { id: 46, title: 'X-Men \'97 — Season 1', year: '2024', type: 'animated', verdict: 'optional', description: 'Revival of the beloved 90s animated series, following the X-Men after Professor X\'s departure.', episodes: [
+            { id: 46, title: 'X-Men \'97 — Season 1', poster: 'https://m.media-amazon.com/images/M/MV5BZDE0Zjk5OGYtZTk3OC00ZDZhLWE2NGQtNzc3NmJhNjljYzY5XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2024', type: 'animated', verdict: 'optional', description: 'Revival of the beloved 90s animated series, following the X-Men after Professor X\'s departure.', episodes: [
               { code: 'S1E1', title: 'To Me, My X-Men' }, { code: 'S1E2', title: 'Mutant Liberation Begins' }, { code: 'S1E3', title: 'Fire Made Flesh' }, { code: 'S1E4', title: 'Motendo / Lifedeath – Part 1' }, { code: 'S1E5', title: 'Remember It' }, { code: 'S1E6', title: 'Lifedeath – Part 2' }, { code: 'S1E7', title: 'Bright Eyes' }, { code: 'S1E8', title: 'Tolerance Is Extinction – Part 1' }, { code: 'S1E9', title: 'Tolerance Is Extinction – Part 2' }, { code: 'S1E10', title: 'Tolerance Is Extinction – Part 3' }
             ]},
             { id: 47, title: 'Deadpool & Wolverine', poster: 'https://m.media-amazon.com/images/M/MV5BZTk5ODY0MmQtMzA3Ni00NGY1LThiYzItZThiNjFiNDM4MTM3XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2024', type: 'film', verdict: 'must-watch', description: 'The Merc with a Mouth teams up with Wolverine in a multiverse adventure that bridges Fox\'s X-Men into the MCU.', episodes: null },
             { id: 48, title: 'Agatha All Along', poster: 'https://m.media-amazon.com/images/M/MV5BMDcyZTNjOTEtNzc5Yy00Y2UzLThkMWYtNTY4YmM4OWI5OTMzXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2024', type: 'series', verdict: 'optional', description: 'Agatha Harkness breaks free from Wanda\'s spell and embarks on a quest down the Witches\' Road.', episodes: [
               { code: 'S1E1', title: 'Seekest Thou the Road' }, { code: 'S1E2', title: 'Circle Sewn with Fate' }, { code: 'S1E3', title: 'Through Many Miles' }, { code: 'S1E4', title: 'If I Can\'t Reach You' }, { code: 'S1E5', title: 'Darkest Hour / Wake Thy Power' }, { code: 'S1E6', title: 'Familiar by Thy Side' }, { code: 'S1E7', title: 'Death\'s Hand in Mine' }, { code: 'S1E8', title: 'Follow Me My Friend' }, { code: 'S1E9', title: 'Maiden Mother Crone' }
             ]},
-            { id: 49, title: 'Your Friendly Neighborhood Spider-Man', year: '2025', type: 'animated', verdict: 'skip', description: 'Animated series exploring Peter Parker\'s early days within the MCU\'s multiverse.', episodes: [
+            { id: 49, title: 'Your Friendly Neighborhood Spider-Man', poster: 'https://m.media-amazon.com/images/M/MV5BYjBiZjRiZmMtOGU0Ni00ZGU0LTg5YjUtYjFmZDkwMGIyMWNlXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2025', type: 'animated', verdict: 'skip', description: 'Animated series exploring Peter Parker\'s early days within the MCU\'s multiverse.', episodes: [
               { code: 'S1E1', title: 'Amazing Fantasy' }, { code: 'S1E2', title: 'The Parker Luck' }, { code: 'S1E3', title: 'Secret Identity Crisis' }, { code: 'S1E4', title: 'Hitting the Big Time' }, { code: 'S1E5', title: 'The Unicorn Unleashed' }, { code: 'S1E6', title: 'Duel with the Devil' }, { code: 'S1E7', title: 'Scorpion Rising' }, { code: 'S1E8', title: 'Tangled Web' }, { code: 'S1E9', title: 'Hero or Menace' }, { code: 'S1E10', title: 'If This Be My Destiny...' }
             ]},
             { id: 50, title: 'Captain America: Brave New World', poster: 'https://m.media-amazon.com/images/M/MV5BNDRjY2E0ZmEtN2QwNi00NTEwLWI3MWItODNkMGYwYWFjNGE0XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2025', type: 'film', verdict: 'recommended', description: 'Sam Wilson fully steps into the role of Captain America, navigating global tensions.', episodes: null },
@@ -123,11 +123,11 @@ const MCU_DATA = {
             { id: 52, title: 'Ironheart', poster: 'https://m.media-amazon.com/images/M/MV5BN2EzMGZhOTktYjVhZi00NmIwLWIxZDEtNWUxZTQyNjhkYWQ4XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2025', type: 'series', verdict: 'optional', description: 'Genius inventor Riri Williams builds an advanced suit and discovers a magical threat.', episodes: [
               { code: 'S1E1', title: 'Take Me Home' }, { code: 'S1E2', title: 'Will the Real Natalie Please Stand Up?' }, { code: 'S1E3', title: 'We in Danger, Girl' }, { code: 'S1E4', title: 'Bad Magic' }, { code: 'S1E5', title: 'Karma\'s a Glitch' }, { code: 'S1E6', title: 'The Past Is the Past' }
             ]},
-            { id: 53, title: 'Thunderbolts*', year: '2025', type: 'film', verdict: 'must-watch', description: 'A team of anti-heroes are assembled by the government — leading to a \"New Avengers.\"', episodes: null },
+            { id: 53, title: 'Thunderbolts*', poster: 'https://m.media-amazon.com/images/M/MV5BNDIzNGUwZmYtODM0Yy00NjA3LTgxOGUtOTY0ZGM5MjBkM2I3XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2025', type: 'film', verdict: 'must-watch', description: 'A team of anti-heroes are assembled by the government — leading to a \"New Avengers.\"', episodes: null },
             { id: 54, title: 'Eyes of Wakanda', year: '2025', type: 'animated', verdict: 'skip', description: 'Animated anthology exploring Wakanda\'s warriors who protected its secrets throughout the ages.', episodes: [
               { code: 'S1E1', title: 'Into the Lion\'s Den' }, { code: 'S1E2', title: 'Legends and Lies' }, { code: 'S1E3', title: 'Lost and Found' }, { code: 'S1E4', title: 'The Last Panther' }
             ]},
-            { id: 55, title: 'Marvel Zombies', year: '2025', type: 'animated', verdict: 'skip', description: 'Animated series set in the zombie-overrun universe first seen in What If...?', episodes: [
+            { id: 55, title: 'Marvel Zombies', poster: 'https://m.media-amazon.com/images/M/MV5BYWFiOTcwNzItMTg5Mi00ZTU4LThkZWYtYWNmZWQ1ODE5ZTVmXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2025', type: 'animated', verdict: 'skip', description: 'Animated series set in the zombie-overrun universe first seen in What If...?', episodes: [
               { code: 'S1E1', title: 'Episode 1' }, { code: 'S1E2', title: 'Episode 2' }, { code: 'S1E3', title: 'Episode 3' }, { code: 'S1E4', title: 'Episode 4' }
             ]}
           ]
@@ -145,7 +145,7 @@ const MCU_DATA = {
             { id: 59, title: 'X-Men \'97 — Season 2', year: '2026', type: 'animated', verdict: 'optional', description: 'The X-Men continue their fight for mutant coexistence in this animated revival.', episodes: [
               { code: 'S2E1', title: 'Days of Past Future' }, { code: 'S2E2', title: 'A Force to Be Reckoned With' }, { code: 'S2E3', title: 'Rise of Apocalypse – Part 1' }, { code: 'S2E4', title: 'Rise of Apocalypse – Part 2' }, { code: 'S2E5', title: 'Weapon X, Lies, and DVDs' }, { code: 'S2E6', title: 'Danger.Exe' }, { code: 'S2E7', title: 'Strange Land, Savage Heart' }, { code: 'S2E8', title: 'The Dead Man\'s Hand' }, { code: 'S2E9', title: 'Survival of the Fittest' }
             ]},
-            { id: 60, title: 'Spider-Man: Brand New Day', poster: 'https://m.media-amazon.com/images/M/MV5BMjJkZjE4NjMtNWVjMC00YzIzLWIwYmUtNTBmY2Q0OTQxYTVjXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: 'Jul 2026', type: 'film', verdict: 'must-watch', description: 'Peter Parker navigates life after reclaiming his anonymity, with direct setup for Doomsday.', episodes: null },
+            { id: 60, title: 'Spider-Man: Brand New Day', poster: 'https://m.media-amazon.com/images/M/MV5BOWNjYWM3NWItOGE0ZS00MWRjLThiZWEtYjc4ZmNmMmU5ZTVmXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: 'Jul 2026', type: 'film', verdict: 'must-watch', description: 'Peter Parker navigates life after reclaiming his anonymity, with direct setup for Doomsday.', episodes: null },
             { id: 61, title: 'Avengers: Doomsday', poster: 'https://m.media-amazon.com/images/M/MV5BMTdlMDgxNjAtNjkxOC00ZDYxLTg3MDEtZmIwZjIxOGMwYjVkXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: 'Dec 2026', type: 'film', verdict: 'must-watch', description: 'THE EVENT. The Avengers face Doctor Doom in a multiversal showdown that will change everything.', episodes: null },
             { id: 62, title: 'Avengers: Secret Wars', poster: 'https://m.media-amazon.com/images/M/MV5BYTQyZTQ5MWQtN2M4NC00YWQwLTg3ZTctM2JiZDE4NDBkZDJkXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: 'Dec 2027', type: 'film', verdict: 'must-watch', description: 'The climactic finale of the Multiverse Saga — promising to reshape the MCU forever.', episodes: null }
           ]
@@ -167,7 +167,7 @@ const MCU_DATA = {
             { id: 107, title: 'X-Men: Days of Future Past', poster: 'https://m.media-amazon.com/images/M/MV5BNzNiYWE4NjMtMTU4OS00NmM4LWE4ZjAtYmE5OTA5NjkzODExXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2014', type: 'film', verdict: 'recommended', nonMcu: true, description: 'Major timeline-altering event merging both X-Men casts. Key multiverse/timeline rewriting concepts.', episodes: null },
             { id: 108, title: 'Deadpool', poster: 'https://m.media-amazon.com/images/M/MV5BNzY3ZWU5NGQtOTViNC00ZWVmLTliNjAtNzViNzlkZWQ4YzQ4XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2016', type: 'film', verdict: 'essential', nonMcu: true, description: 'Wade Wilson\'s origin in the Fox universe. Direct prequel to the MCU\'s Deadpool & Wolverine.', episodes: null },
             { id: 109, title: 'X-Men: Apocalypse', poster: 'https://m.media-amazon.com/images/M/MV5BNjVhNWY3NjItNmZjOS00NTU3LWFiZTctNzdjNGM5Y2Y0MDUwXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2016', type: 'film', verdict: 'optional', nonMcu: true, description: 'Features En Sabah Nur and introduces younger versions of Cyclops, Jean Grey, and Storm.', episodes: null },
-            { id: 110, title: 'Logan', poster: 'https://m.media-amazon.com/images/M/MV5BMTgwNTY2OTI3MF5BMl5BanBnXkFtZTcwNDc1MTg4Nw@@._V1_FMjpg_UX600_.jpg',  year: '2017', type: 'film', verdict: 'essential', nonMcu: true, description: 'Wolverine\'s final story — the \"Anchor Being\" event directly impacting Deadpool & Wolverine.', episodes: null },
+            { id: 110, title: 'Logan', poster: 'https://m.media-amazon.com/images/M/MV5BM2JjODdkMGMtNmY2YS00OGM2LThiY2YtZGYyNzE4Nzc2ODA0XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2017', type: 'film', verdict: 'essential', nonMcu: true, description: 'Wolverine\'s final story — the \"Anchor Being\" event directly impacting Deadpool & Wolverine.', episodes: null },
             { id: 111, title: 'Deadpool 2', poster: 'https://m.media-amazon.com/images/M/MV5BNGY3N2ZhYmMtYTlmYi00ZWIzLWJiZWMtMjgxMjljYTk3MDAwXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2018', type: 'film', verdict: 'essential', nonMcu: true, description: 'Introduces Cable, X-Force, and time-travel that causes the TVA to detain Wade.', episodes: null },
             { id: 112, title: 'X-Men: Dark Phoenix', poster: 'https://m.media-amazon.com/images/M/MV5BZjcwMDIyNjctMDVmNS00MzkyLTgxMDMtNTFmNTk0NDkyNzdjXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2019', type: 'film', verdict: 'optional', nonMcu: true, description: 'The Fox X-Men\'s final mainline film. The \"death\" of the Fox universe.', episodes: null },
             { id: 113, title: 'The New Mutants', poster: 'https://m.media-amazon.com/images/M/MV5BZGVlMjBkYmMtZDhmYS00N2QyLWI2YTgtMDU2N2UwOWYzM2MxXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2020', type: 'film', verdict: 'skip', nonMcu: true, description: 'Final Fox X-Men film featuring young mutants. Minor connections to the wider franchise.', episodes: null }
@@ -176,7 +176,7 @@ const MCU_DATA = {
         {
           id: 'sony-spidey', name: 'Previous Spider-Man Films', years: '2002–2014',
           entries: [
-            { id: 201, title: 'Spider-Man', poster: 'https://m.media-amazon.com/images/M/MV5BMjJkZjE4NjMtNWVjMC00YzIzLWIwYmUtNTBmY2Q0OTQxYTVjXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2002', type: 'film', verdict: 'essential', nonMcu: true, description: 'Tobey Maguire\'s Spider-Man origin. Willem Dafoe\'s Green Goblin returned in No Way Home.', episodes: null },
+            { id: 201, title: 'Spider-Man', poster: 'https://m.media-amazon.com/images/M/MV5BZWM0OWVmNTEtNWVkOS00MzgyLTkyMzgtMmE2ZTZiNjY4MmFiXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2002', type: 'film', verdict: 'essential', nonMcu: true, description: 'Tobey Maguire\'s Spider-Man origin. Willem Dafoe\'s Green Goblin returned in No Way Home.', episodes: null },
             { id: 202, title: 'Spider-Man 2', poster: 'https://m.media-amazon.com/images/M/MV5BNGQ0YTQyYTgtNWI2YS00NTE2LWJmNDItNTFlMTUwNmFlZTM0XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2004', type: 'film', verdict: 'essential', nonMcu: true, description: 'Introduces Alfred Molina\'s Doc Ock, who crossed into the MCU during No Way Home.', episodes: null },
             { id: 203, title: 'Spider-Man 3', poster: 'https://m.media-amazon.com/images/M/MV5BODE2NzNhMDctYjUzMC00Y2M5LWI2Y2EtODJkZTFjN2Y5ODlmXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2007', type: 'film', verdict: 'recommended', nonMcu: true, description: 'Features Sandman (returned in No Way Home) and early live-action symbiote lore.', episodes: null },
             { id: 204, title: 'The Amazing Spider-Man', poster: 'https://m.media-amazon.com/images/M/MV5BMjMyOTM4MDMxNV5BMl5BanBnXkFtZTcwNjIyNzExOA@@._V1_FMjpg_UX600_.jpg',  year: '2012', type: 'film', verdict: 'recommended', nonMcu: true, description: 'Andrew Garfield\'s Peter Parker and the Lizard, both pulled into the MCU in No Way Home.', episodes: null },
@@ -186,9 +186,9 @@ const MCU_DATA = {
         {
           id: 'ff-films', name: 'Previous Fantastic Four Films', years: '2005–2015',
           entries: [
-            { id: 301, title: 'Fantastic Four', poster: 'https://m.media-amazon.com/images/M/MV5BOGM5MzA3MDAtYmEwMi00ZDNiLTg4MDgtMTZjOTc0ZGMyNTIwXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2005', type: 'film', verdict: 'essential', nonMcu: true, description: 'First F4 team. Chris Evans as Johnny Storm reprised this role in Deadpool & Wolverine. Introduces Doctor Doom.', episodes: null },
+            { id: 301, title: 'Fantastic Four', poster: 'https://m.media-amazon.com/images/M/MV5BNjY2YmZmMzUtZWY5Mi00MzI3LTljOTgtYTMwMWY1ODI5ZWY5XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2005', type: 'film', verdict: 'essential', nonMcu: true, description: 'First F4 team. Chris Evans as Johnny Storm reprised this role in Deadpool & Wolverine. Introduces Doctor Doom.', episodes: null },
             { id: 302, title: 'Fantastic Four: Rise of the Silver Surfer', poster: 'https://m.media-amazon.com/images/M/MV5BNmZmMTU0OGQtOWRmNS00ZjA1LWJkM2EtYmUwNGEzMjIyZDM1XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2007', type: 'film', verdict: 'recommended', nonMcu: true, description: 'Doctor Doom hijacks cosmic power from the Silver Surfer — mirroring Doomsday comic storylines.', episodes: null },
-            { id: 303, title: 'Fantastic Four (Fant4stic)', year: '2015', type: 'film', verdict: 'optional', nonMcu: true, description: 'Dark reboot with alternate Doom origin. Shows different multiverse interpretation of the team.', episodes: null }
+            { id: 303, title: 'Fantastic Four (Fant4stic)', poster: 'https://m.media-amazon.com/images/M/MV5BMTk0OTMyMDA0OF5BMl5BanBnXkFtZTgwMzY5NTkzNTE@._V1_FMjpg_UX600_.jpg', year: '2015', type: 'film', verdict: 'optional', nonMcu: true, description: 'Dark reboot with alternate Doom origin. Shows different multiverse interpretation of the team.', episodes: null }
           ]
         },
         {
@@ -214,8 +214,8 @@ const MCU_DATA = {
           entries: [
             { id: 501, title: 'Venom', poster: 'https://m.media-amazon.com/images/M/MV5BNTYwMDg5MDItNjhmZi00NmVmLThjNWItMmNkMjVkMWRhNzI2XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2018', type: 'film', verdict: 'optional', nonMcu: true, description: 'Tom Hardy\'s Eddie Brock/Venom. Post-credits links to the MCU.', episodes: null },
             { id: 502, title: 'Venom: Let There Be Carnage', poster: 'https://m.media-amazon.com/images/M/MV5BZGIxMTU1MjItM2FmMi00YmFiLTgwNDMtMTczYmVjYTBhNGZhXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2021', type: 'film', verdict: 'recommended', nonMcu: true, description: 'Post-credits scene teleports Eddie Brock directly into the MCU during No Way Home.', episodes: null },
-            { id: 503, title: 'Spider-Man: Into the Spider-Verse', poster: 'https://m.media-amazon.com/images/M/MV5BMjJkZjE4NjMtNWVjMC00YzIzLWIwYmUtNTBmY2Q0OTQxYTVjXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2018', type: 'animated', verdict: 'recommended', nonMcu: true, description: 'The definitive multiverse Spider-Man story. Conceptually essential for understanding the multiverse.', episodes: null },
-            { id: 504, title: 'Spider-Man: Across the Spider-Verse', poster: 'https://m.media-amazon.com/images/M/MV5BMjJkZjE4NjMtNWVjMC00YzIzLWIwYmUtNTBmY2Q0OTQxYTVjXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2023', type: 'animated', verdict: 'optional', nonMcu: true, description: 'Continues the multiverse Spider-Man saga. References Earth-616 and Doctor Strange.', episodes: null },
+            { id: 503, title: 'Spider-Man: Into the Spider-Verse', poster: 'https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_FMjpg_UX600_.jpg',  year: '2018', type: 'animated', verdict: 'recommended', nonMcu: true, description: 'The definitive multiverse Spider-Man story. Conceptually essential for understanding the multiverse.', episodes: null },
+            { id: 504, title: 'Spider-Man: Across the Spider-Verse', poster: 'https://m.media-amazon.com/images/M/MV5BNThiZjA3MjItZGY5Ni00ZmJhLWEwN2EtOTBlYTA4Y2E0M2ZmXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2023', type: 'animated', verdict: 'optional', nonMcu: true, description: 'Continues the multiverse Spider-Man saga. References Earth-616 and Doctor Strange.', episodes: null },
             { id: 505, title: 'Venom: The Last Dance', poster: 'https://m.media-amazon.com/images/M/MV5BZDMyYWU4NzItZDY0MC00ODE2LTkyYTMtMzNkNDdmYmFhZDg0XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2024', type: 'film', verdict: 'optional', nonMcu: true, description: 'Concludes Eddie Brock\'s journey. A piece of symbiote was left in the MCU.', episodes: null }
           ]
         },
@@ -353,6 +353,9 @@ class MCUApp {
   }
 
   setupScrollListener() {
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') this.closeModal();
+    });
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (!ticking) {
@@ -378,10 +381,13 @@ class MCUApp {
       this.renderHero() +
       this.renderToolbar() +
       this.renderTabs() +
+      this.renderLegend() +
       '<div class="main-content">' +
         this.renderContent() +
+        this.renderFastTrack() +
       '</div>' +
-      this.renderFooter();
+      this.renderFooter() +
+      this.renderToastContainer();
     this.bindEvents();
     this.updateAllProgress();
     this.initCompletedPhases();
@@ -407,15 +413,19 @@ class MCUApp {
     const heroTitle = upNext ? upNext.title : "Avengers: Doomsday";
     const heroStatus = upNext ? `Next up in ${upNext.year}` : "All Caught Up";
     
+    const ctaHtml = upNext ? `
+        <button class="hero-cta" onclick="app.tracker.toggle('entry-${upNext.id}'); app.render();">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          Mark as Watched
+        </button>
+    ` : `<span class="hero-status" style="color: var(--status-watched); margin-top: 8px;">✓ All caught up — you're ready for Doomsday!</span>`;
+
     return `
     <section class="hero-section" style="background-image: url('images/hero_banner.jpg?v=3');">
       <div class="hero-content">
         <span class="hero-status">${heroStatus}</span>
         <h1 class="hero-title">${heroTitle}</h1>
-        <button class="hero-cta" onclick="app.tracker.toggle('entry-${upNext ? upNext.id : 0}'); app.render();">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-          Mark as Watched
-        </button>
+        ${ctaHtml}
       </div>
     </section>
     <div class="overall-progress-container">
@@ -597,7 +607,7 @@ class MCUApp {
     }
     
     return `
-      <div class="entry-card ${stateClass}" data-id="${entry.id}">
+      <div class="entry-card ${stateClass}" data-id="${entry.id}" data-type="${entry.type}" data-non-mcu="${!!entry.nonMcu}">
         <div class="poster-container" onclick="app.openModal(${entry.id})">
           ${posterHtml}
           <div class="status-badge">
@@ -790,7 +800,7 @@ class MCUApp {
     document.querySelectorAll('.entry-card').forEach(card => {
       const type = card.dataset.type;
       const isNonMcu = card.dataset.nonMcu === 'true';
-      const title = card.querySelector('.card-title-text').textContent.toLowerCase();
+      const title = card.querySelector('.card-title').textContent.toLowerCase();
       let matchesFilter;
       if (this.activeFilter === 'all') {
         matchesFilter = true;
@@ -886,6 +896,25 @@ class MCUApp {
                 ${isWatched ? 'Watched' : 'Mark as Watched'}
               </button>
             </div>
+            ${entry.episodes && entry.episodes.length > 0 ? `
+            <div class="modal-episodes">
+              <h3 style="font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin-bottom: 12px;">Episodes (${entry.episodes.length})</h3>
+              <div class="ep-list">
+                ${entry.episodes.map(ep => {
+                  const epId = 'ep-' + entry.id + '-' + ep.code;
+                  const epWatched = this.tracker.isWatched(epId);
+                  return '<div class="ep-item ' + (epWatched ? 'watched' : '') + '" data-ep-id="' + epId + '">' +
+                    '<div class="ep-check ' + (epWatched ? 'checked' : '') + '" onclick="app.toggleEpisodeInModal(\'' + epId + '\', ' + entry.id + ')">' +
+                      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" width="14" height="14"><polyline points="20 6 9 17 4 12"></polyline></svg>' +
+                    '</div>' +
+                    '<div class="ep-info">' +
+                      '<span class="ep-title">' + ep.code + ': ' + ep.title + '</span>' +
+                    '</div>' +
+                  '</div>';
+                }).join('')}
+              </div>
+            </div>
+            ` : ''}
           </div>
         </div>
       </div>
@@ -903,6 +932,22 @@ class MCUApp {
   closeModal() {
     const modalContainer = document.getElementById('modal-container');
     if (modalContainer) modalContainer.innerHTML = '';
+  }
+
+  toggleEpisodeInModal(epId, entryId) {
+    const newState = this.tracker.toggle(epId);
+    const epItem = document.querySelector(`[data-ep-id="${epId}"]`);
+    if (epItem) {
+      epItem.classList.toggle('watched', newState);
+      const epCheck = epItem.querySelector('.ep-check');
+      if (epCheck) epCheck.classList.toggle('checked', newState);
+    }
+    const entry = this.findEntry(entryId);
+    if (entry && entry.episodes) {
+      const allWatched = entry.episodes.every(ep => this.tracker.isWatched(`ep-${entryId}-${ep.code}`));
+      this.tracker.setWatched(`entry-${entryId}`, allWatched);
+    }
+    this.updateAllProgress();
   }
 
   initCompletedPhases() {
