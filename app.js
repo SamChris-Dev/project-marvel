@@ -346,9 +346,17 @@ class MCUApp {
     this.activeFilter = 'all';
     this.searchQuery = '';
     this.searchTimeout = null;
+    this.activeTab = 'phase-1'; // Default tab
     this.completedPhases = new Set();
     this.render();
     this.setupScrollListener();
+  }
+
+  setupScrollListener() {
+    window.addEventListener('scroll', () => {
+      const toolbar = document.getElementById('toolbar');
+      if (toolbar) toolbar.classList.toggle('scrolled', window.scrollY > 0);
+    });
   }
 
   render() {
@@ -356,6 +364,7 @@ class MCUApp {
     app.innerHTML =
       this.renderHero() +
       this.renderToolbar() +
+      this.renderTabs() +
       '<div class="main-content">' +
         this.renderContent() +
       '</div>' +
@@ -438,18 +447,71 @@ class MCUApp {
     </nav>`;
   }
 
+  renderTabs() {
+    const allPhases = [];
+    MCU_DATA.sagas.forEach(saga => {
+      saga.phases.forEach(phase => {
+        allPhases.push(phase);
+      });
+    });
+
+    return `
+      <div class="tabs-wrapper">
+        <div class="tabs-container">
+          ${allPhases.map(phase => `
+            <button class="tab-btn ${this.activeTab === phase.id ? 'active' : ''}" data-tab="${phase.id}">
+              ${phase.name}
+            </button>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  setActiveTab(tabId) {
+    this.activeTab = tabId;
+    this.render();
+  }
+
   renderContent() {
-    return MCU_DATA.sagas.map(saga => `
-      <section class="saga-section" data-saga="${saga.id}">
+    if (this.searchQuery) {
+      return MCU_DATA.sagas.map(saga => `
+        <section class="saga-section" data-saga="${saga.id}">
+          <div class="saga-header">
+            <span class="saga-icon">${saga.icon}</span>
+            <h2 class="saga-title">${saga.name}</h2>
+            <div class="saga-line"></div>
+          </div>
+          <p class="saga-subtitle">${saga.years}</p>
+          ${saga.phases.map(phase => this.renderPhase(phase)).join('')}
+        </section>
+      `).join('');
+    }
+
+    let activePhaseData = null;
+    let activeSagaData = null;
+    MCU_DATA.sagas.forEach(saga => {
+      saga.phases.forEach(phase => {
+        if (phase.id === this.activeTab) {
+          activePhaseData = phase;
+          activeSagaData = saga;
+        }
+      });
+    });
+
+    if (!activePhaseData) return '';
+
+    return `
+      <section class="saga-section" data-saga="${activeSagaData.id}">
         <div class="saga-header">
-          <span class="saga-icon">${saga.icon}</span>
-          <h2 class="saga-title">${saga.name}</h2>
+          <span class="saga-icon">${activeSagaData.icon}</span>
+          <h2 class="saga-title">${activeSagaData.name}</h2>
           <div class="saga-line"></div>
         </div>
-        <p class="saga-subtitle">${saga.years}</p>
-        ${saga.phases.map(phase => this.renderPhase(phase)).join('')}
+        <p class="saga-subtitle">${activeSagaData.years}</p>
+        ${this.renderPhase(activePhaseData)}
       </section>
-    `).join('');
+    `;
   }
 
   renderPhase(phase) {
@@ -589,6 +651,12 @@ class MCUApp {
         const list = document.getElementById(`episodes-${entryId}`);
         toggle.classList.toggle('open');
         list.classList.toggle('expanded');
+        return;
+      }
+
+      const tabBtn = e.target.closest('.tab-btn');
+      if (tabBtn) {
+        this.setActiveTab(tabBtn.dataset.tab);
         return;
       }
 
