@@ -435,12 +435,12 @@ class MCUApp {
 
   renderPhase(phase) {
     const phaseImages = {
-      'phase-1': { img: 'images/phase_1.jpg', sub: 'Where It All Began' },
-      'phase-2': { img: 'images/phase_2.jpg', sub: 'The Age of Ultron' },
-      'phase-3': { img: 'images/phase_3.jpg', sub: 'The Infinity Saga Finale' },
-      'phase-4': { img: 'images/phase_4.jpg', sub: 'The Multiverse Cracks Open' },
-      'phase-5': { img: 'images/phase_5.jpg', sub: 'Worlds Collide' },
-      'phase-6': { img: 'images/phase_6.jpg', sub: 'The Road to Doomsday' }
+      'phase-1': { img: 'images/phase_1.jpg?v=2', sub: 'Where It All Began' },
+      'phase-2': { img: 'images/phase_2.jpg?v=2', sub: 'The Age of Ultron' },
+      'phase-3': { img: 'images/phase_3.jpg?v=2', sub: 'The Infinity Saga Finale' },
+      'phase-4': { img: 'images/phase_4.jpg?v=2', sub: 'The Multiverse Cracks Open' },
+      'phase-5': { img: 'images/phase_5.jpg?v=2', sub: 'Worlds Collide' },
+      'phase-6': { img: 'images/phase_6.jpg?v=2', sub: 'The Road to Doomsday' }
     };
     const banner = phaseImages[phase.id];
     let idx = 0;

@@ -74,7 +74,7 @@ body {
   justify-content: center;
   background:
     linear-gradient(180deg, rgba(6,6,14,0.3) 0%, rgba(6,6,14,0.65) 50%, var(--bg-primary) 100%),
-    url('images/hero_banner.jpg') center/cover no-repeat;
+    url('images/hero_banner.jpg?v=2') center/cover no-repeat;
   padding: 100px 24px 70px;
   position: relative;
   overflow: hidden;
