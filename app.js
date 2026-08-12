@@ -353,9 +353,16 @@ class MCUApp {
   }
 
   setupScrollListener() {
+    let ticking = false;
     window.addEventListener('scroll', () => {
-      const toolbar = document.getElementById('toolbar');
-      if (toolbar) toolbar.classList.toggle('scrolled', window.scrollY > 0);
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const toolbar = document.getElementById('toolbar');
+          if (toolbar) toolbar.classList.toggle('scrolled', window.scrollY > 100);
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
     
     // Close dropdown on outside click
@@ -925,21 +932,8 @@ class MCUApp {
     }, 3000);
   }
 
-  setupScrollListener() {
-    let ticking = false;
-    window.addEventListener('scroll', () => {
-      if (!ticking) {
-        requestAnimationFrame(() => {
-          const toolbar = document.getElementById('toolbar');
-          if (toolbar) toolbar.classList.toggle('scrolled', window.scrollY > 100);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
-  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  new MCUApp();
+  window.app = new MCUApp();
 });
