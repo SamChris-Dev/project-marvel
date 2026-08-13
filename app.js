@@ -71,7 +71,7 @@ const MCU_DATA = {
             ]},
             { id: 30, title: 'Shang-Chi and the Legend of the Ten Rings', poster: 'https://m.media-amazon.com/images/M/MV5BZmY5MDcyNzAtYzg3MC00MGNlLTg3OGItNmRjYThkZGVlNzAyXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2021', type: 'film', verdict: 'recommended', description: 'Shang-Chi must confront his father\'s dark legacy and the clandestine Ten Rings organization.', episodes: null },
             { id: 31, title: 'Eternals', poster: 'https://m.media-amazon.com/images/M/MV5BZTBiZjI2M2UtZTNiNy00NmU4LWJiMjYtZjk4MDIzMzhlMjFlXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2021', type: 'film', verdict: 'skip', description: 'An immortal alien race emerges from hiding to protect humanity from their ancient counterparts.', episodes: null },
-            { id: 32, title: 'Spider-Man: No Way Home', poster: 'https://m.media-amazon.com/images/M/MV5BMjJkZjE4NjMtNWVjMC00YzIzLWIwYmUtNTBmY2Q0OTQxYTVjXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2021', type: 'film', verdict: 'must-watch', description: 'Peter Parker\'s identity crisis cracks the multiverse open, bringing villains from other realities.', episodes: null },
+            { id: 32, title: 'Spider-Man: No Way Home', poster: 'https://m.media-amazon.com/images/M/MV5BMmFiZGZjMmEtMTA0Ni00MzA2LTljMTYtZGI2MGJmZWYzZTQ2XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2021', type: 'film', verdict: 'must-watch', description: 'Peter Parker\'s identity crisis cracks the multiverse open, bringing villains from other realities.', episodes: null },
             { id: 33, title: 'Moon Knight', poster: 'https://m.media-amazon.com/images/M/MV5BNDAzNmYwZjgtNDc3YS00ZDMyLTk0MjktMTg4MGNmNGU3MjlhXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2022', type: 'series', verdict: 'skip', description: 'Marc Spector, a man with dissociative identity disorder, becomes the conduit for the Egyptian moon god.', episodes: [
               { code: 'S1E1', title: 'The Goldfish Problem' }, { code: 'S1E2', title: 'Summon the Suit' }, { code: 'S1E3', title: 'The Friendly Type' }, { code: 'S1E4', title: 'The Tomb' }, { code: 'S1E5', title: 'Asylum' }, { code: 'S1E6', title: 'Gods and Monsters' }
             ]},
@@ -92,7 +92,7 @@ const MCU_DATA = {
         {
           id: 'phase-5', name: 'Phase Five', years: '2023–2025',
           entries: [
-            { id: 40, title: 'Ant-Man and the Wasp: Quantumania', poster: 'https://m.media-amazon.com/images/M/MV5BODZhNzlmOGItMWUyYS00Y2Q5LWFlNzMtM2I2NDI1NTQzNWM2XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2023', type: 'film', verdict: 'optional', description: 'The heroes plunge into the Quantum Realm and encounter Kang the Conqueror.', episodes: null },
+            { id: 40, title: 'Ant-Man and the Wasp: Quantumania', poster: 'https://m.media-amazon.com/images/M/MV5BMThkYWY5ZjQtYjJlMS00MDFmLWFkYzEtODEzZjg5YWFmMGY4XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2023', type: 'film', verdict: 'optional', description: 'The heroes plunge into the Quantum Realm and encounter Kang the Conqueror.', episodes: null },
             { id: 41, title: 'Secret Invasion', poster: 'https://m.media-amazon.com/images/M/MV5BNmYzYzA2NzMtOTVmMC00ZDY4LThlMDctZmUyN2NlMjQ2ODViXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2023', type: 'series', verdict: 'skip', description: 'Nick Fury uncovers a Skrull plot to infiltrate and conquer Earth from within.', episodes: [
               { code: 'S1E1', title: 'Resurrection' }, { code: 'S1E2', title: 'Promises' }, { code: 'S1E3', title: 'Betrayed' }, { code: 'S1E4', title: 'Beloved' }, { code: 'S1E5', title: 'Harvest' }, { code: 'S1E6', title: 'Home' }
             ]},
@@ -113,18 +113,18 @@ const MCU_DATA = {
             { id: 48, title: 'Agatha All Along', poster: 'https://m.media-amazon.com/images/M/MV5BMDcyZTNjOTEtNzc5Yy00Y2UzLThkMWYtNTY4YmM4OWI5OTMzXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2024', type: 'series', verdict: 'optional', description: 'Agatha Harkness breaks free from Wanda\'s spell and embarks on a quest down the Witches\' Road.', episodes: [
               { code: 'S1E1', title: 'Seekest Thou the Road' }, { code: 'S1E2', title: 'Circle Sewn with Fate' }, { code: 'S1E3', title: 'Through Many Miles' }, { code: 'S1E4', title: 'If I Can\'t Reach You' }, { code: 'S1E5', title: 'Darkest Hour / Wake Thy Power' }, { code: 'S1E6', title: 'Familiar by Thy Side' }, { code: 'S1E7', title: 'Death\'s Hand in Mine' }, { code: 'S1E8', title: 'Follow Me My Friend' }, { code: 'S1E9', title: 'Maiden Mother Crone' }
             ]},
-            { id: 49, title: 'Your Friendly Neighborhood Spider-Man', poster: 'https://m.media-amazon.com/images/M/MV5BYjBiZjRiZmMtOGU0Ni00ZGU0LTg5YjUtYjFmZDkwMGIyMWNlXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2025', type: 'animated', verdict: 'skip', description: 'Animated series exploring Peter Parker\'s early days within the MCU\'s multiverse.', episodes: [
+            { id: 49, title: 'Your Friendly Neighborhood Spider-Man', poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/m58aoxOk8JLEybVV1hQDlcizn4J.jpg', year: '2025', type: 'animated', verdict: 'skip', description: 'Animated series exploring Peter Parker\'s early days within the MCU\'s multiverse.', episodes: [
               { code: 'S1E1', title: 'Amazing Fantasy' }, { code: 'S1E2', title: 'The Parker Luck' }, { code: 'S1E3', title: 'Secret Identity Crisis' }, { code: 'S1E4', title: 'Hitting the Big Time' }, { code: 'S1E5', title: 'The Unicorn Unleashed' }, { code: 'S1E6', title: 'Duel with the Devil' }, { code: 'S1E7', title: 'Scorpion Rising' }, { code: 'S1E8', title: 'Tangled Web' }, { code: 'S1E9', title: 'Hero or Menace' }, { code: 'S1E10', title: 'If This Be My Destiny...' }
             ]},
             { id: 50, title: 'Captain America: Brave New World', poster: 'https://m.media-amazon.com/images/M/MV5BNDRjY2E0ZmEtN2QwNi00NTEwLWI3MWItODNkMGYwYWFjNGE0XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2025', type: 'film', verdict: 'recommended', description: 'Sam Wilson fully steps into the role of Captain America, navigating global tensions.', episodes: null },
-            { id: 51, title: 'Daredevil: Born Again — Season 1', year: '2025', type: 'series', verdict: 'recommended', description: 'Matt Murdock continues his fight for justice while clashing with Wilson Fisk\'s political rise.', episodes: [
+            { id: 51, title: 'Daredevil: Born Again — Season 1', poster: 'https://m.media-amazon.com/images/M/MV5BNDBkMWRhMzEtM2M0Ny00OGZhLThkZGMtMTY1NWUwZWNhODdiXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2025', type: 'series', verdict: 'recommended', description: 'Matt Murdock continues his fight for justice while clashing with Wilson Fisk\'s political rise.', episodes: [
               { code: 'S1E1', title: 'Heaven\'s Half Hour' }, { code: 'S1E2', title: 'Optics' }, { code: 'S1E3', title: 'The Hollow of His Hand' }, { code: 'S1E4', title: 'Sic Semper Systema' }, { code: 'S1E5', title: 'With Interest' }, { code: 'S1E6', title: 'Excessive Force' }, { code: 'S1E7', title: 'Art for Art\'s Sake' }, { code: 'S1E8', title: 'Isle of Joy' }, { code: 'S1E9', title: 'Straight to Hell' }
             ]},
             { id: 52, title: 'Ironheart', poster: 'https://m.media-amazon.com/images/M/MV5BN2EzMGZhOTktYjVhZi00NmIwLWIxZDEtNWUxZTQyNjhkYWQ4XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2025', type: 'series', verdict: 'optional', description: 'Genius inventor Riri Williams builds an advanced suit and discovers a magical threat.', episodes: [
               { code: 'S1E1', title: 'Take Me Home' }, { code: 'S1E2', title: 'Will the Real Natalie Please Stand Up?' }, { code: 'S1E3', title: 'We in Danger, Girl' }, { code: 'S1E4', title: 'Bad Magic' }, { code: 'S1E5', title: 'Karma\'s a Glitch' }, { code: 'S1E6', title: 'The Past Is the Past' }
             ]},
             { id: 53, title: 'Thunderbolts*', poster: 'https://m.media-amazon.com/images/M/MV5BNDIzNGUwZmYtODM0Yy00NjA3LTgxOGUtOTY0ZGM5MjBkM2I3XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2025', type: 'film', verdict: 'must-watch', description: 'A team of anti-heroes are assembled by the government — leading to a \"New Avengers.\"', episodes: null },
-            { id: 54, title: 'Eyes of Wakanda', year: '2025', type: 'animated', verdict: 'skip', description: 'Animated anthology exploring Wakanda\'s warriors who protected its secrets throughout the ages.', episodes: [
+            { id: 54, title: 'Eyes of Wakanda', poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/vHLqKJKRKLlN4MeJgftZWfOFSVm.jpg', year: '2025', type: 'animated', verdict: 'skip', description: 'Animated anthology exploring Wakanda\'s warriors who protected its secrets throughout the ages.', episodes: [
               { code: 'S1E1', title: 'Into the Lion\'s Den' }, { code: 'S1E2', title: 'Legends and Lies' }, { code: 'S1E3', title: 'Lost and Found' }, { code: 'S1E4', title: 'The Last Panther' }
             ]},
             { id: 55, title: 'Marvel Zombies', poster: 'https://m.media-amazon.com/images/M/MV5BYWFiOTcwNzItMTg5Mi00ZTU4LThkZWYtYWNmZWQ1ODE5ZTVmXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2025', type: 'animated', verdict: 'skip', description: 'Animated series set in the zombie-overrun universe first seen in What If...?', episodes: [
@@ -136,13 +136,13 @@ const MCU_DATA = {
           id: 'phase-6', name: 'Phase Six', years: '2025–2027',
           entries: [
             { id: 56, title: 'The Fantastic Four: First Steps', poster: 'https://m.media-amazon.com/images/M/MV5BOGM5MzA3MDAtYmEwMi00ZDNiLTg4MDgtMTZjOTc0ZGMyNTIwXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: 'Jul 2025', type: 'film', verdict: 'must-watch', description: 'Marvel\'s First Family is introduced as they face a cosmic threat — central to Doomsday.', episodes: null },
-            { id: 57, title: 'Wonder Man', poster: 'https://m.media-amazon.com/images/M/MV5BZTAxODliYjctOTlhNi00OWUxLThmNjQtNjA5NmIwM2NmYzU5XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2026', type: 'series', verdict: 'optional', description: 'Simon Williams, an actor-turned-hero with ionic powers, navigates Hollywood and heroism.', episodes: [
+            { id: 57, title: 'Wonder Man', poster: 'https://m.media-amazon.com/images/M/MV5BMDk5YzQ3NjQtNzY3MC00NzM3LWE4NzYtZGRkNDQxYjdiZDkyXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: '2026', type: 'series', verdict: 'optional', description: 'Simon Williams, an actor-turned-hero with ionic powers, navigates Hollywood and heroism.', episodes: [
               { code: 'S1E1', title: 'Matinee' }, { code: 'S1E2', title: 'Self-Tape' }, { code: 'S1E3', title: 'Pacoima' }, { code: 'S1E4', title: 'Doorman' }, { code: 'S1E5', title: 'Found Footage' }, { code: 'S1E6', title: 'Callback' }, { code: 'S1E7', title: 'Kathy Friedman' }, { code: 'S1E8', title: 'Yucca Valley' }
             ]},
-            { id: 58, title: 'Daredevil: Born Again — Season 2', year: '2026', type: 'series', verdict: 'recommended', description: 'Continuation of Matt Murdock\'s war on crime, with deeper ties to the MCU.', episodes: [
+            { id: 58, title: 'Daredevil: Born Again — Season 2', poster: 'https://m.media-amazon.com/images/M/MV5BNDBkMWRhMzEtM2M0Ny00OGZhLThkZGMtMTY1NWUwZWNhODdiXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2026', type: 'series', verdict: 'recommended', description: 'Continuation of Matt Murdock\'s war on crime, with deeper ties to the MCU.', episodes: [
               { code: 'S2E1', title: 'The Northern Star' }, { code: 'S2E2', title: 'Shoot the Moon' }, { code: 'S2E3', title: 'The Scales & The Sword' }, { code: 'S2E4', title: 'Gloves Off' }, { code: 'S2E5', title: 'The Grand Design' }, { code: 'S2E6', title: 'Requiem' }, { code: 'S2E7', title: 'The Hateful Darkness' }, { code: 'S2E8', title: 'The Southern Cross' }
             ]},
-            { id: 59, title: 'X-Men \'97 — Season 2', year: '2026', type: 'animated', verdict: 'optional', description: 'The X-Men continue their fight for mutant coexistence in this animated revival.', episodes: [
+            { id: 59, title: 'X-Men \'97 — Season 2', poster: 'https://m.media-amazon.com/images/M/MV5BZDE0Zjk5OGYtZTk3OC00ZDZhLWE2NGQtNzc3NmJhNjljYzY5XkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2026', type: 'animated', verdict: 'optional', description: 'The X-Men continue their fight for mutant coexistence in this animated revival.', episodes: [
               { code: 'S2E1', title: 'Days of Past Future' }, { code: 'S2E2', title: 'A Force to Be Reckoned With' }, { code: 'S2E3', title: 'Rise of Apocalypse – Part 1' }, { code: 'S2E4', title: 'Rise of Apocalypse – Part 2' }, { code: 'S2E5', title: 'Weapon X, Lies, and DVDs' }, { code: 'S2E6', title: 'Danger.Exe' }, { code: 'S2E7', title: 'Strange Land, Savage Heart' }, { code: 'S2E8', title: 'The Dead Man\'s Hand' }, { code: 'S2E9', title: 'Survival of the Fittest' }
             ]},
             { id: 60, title: 'Spider-Man: Brand New Day', poster: 'https://m.media-amazon.com/images/M/MV5BOWNjYWM3NWItOGE0ZS00MWRjLThiZWEtYjc4ZmNmMmU5ZTVmXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg',  year: 'Jul 2026', type: 'film', verdict: 'must-watch', description: 'Peter Parker navigates life after reclaiming his anonymity, with direct setup for Doomsday.', episodes: null },
@@ -194,19 +194,19 @@ const MCU_DATA = {
         {
           id: 'netflix-marvel', name: 'Netflix Marvel (Defenders Saga)', years: '2015–2019',
           entries: [
-            { id: 401, title: 'Daredevil — Season 1', year: '2015', type: 'series', verdict: 'essential', nonMcu: true, description: 'Establishes Charlie Cox\'s Matt Murdock and Vincent D\'Onofrio\'s Kingpin. Direct prequel to Born Again.', episodes: [
+            { id: 401, title: 'Daredevil — Season 1', poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/9i9X1kpqxfLYbMoZGdh9HNPTtqq.jpg', year: '2015', type: 'series', verdict: 'essential', nonMcu: true, description: 'Establishes Charlie Cox\'s Matt Murdock and Vincent D\'Onofrio\'s Kingpin. Direct prequel to Born Again.', episodes: [
               { code: 'S1E1', title: 'Into the Ring' }, { code: 'S1E2', title: 'Cut Man' }, { code: 'S1E3', title: 'Rabbit in a Snowstorm' }, { code: 'S1E4', title: 'In the Blood' }, { code: 'S1E5', title: 'World on Fire' }, { code: 'S1E6', title: 'Condemned' }, { code: 'S1E7', title: 'Stick' }, { code: 'S1E8', title: 'Shadows in the Glass' }, { code: 'S1E9', title: 'Speak of the Devil' }, { code: 'S1E10', title: 'Nelson v. Murdock' }, { code: 'S1E11', title: 'The Path of the Righteous' }, { code: 'S1E12', title: 'The Ones We Leave Behind' }, { code: 'S1E13', title: 'Daredevil' }
             ]},
-            { id: 402, title: 'Jessica Jones — Season 1', year: '2015', type: 'series', verdict: 'recommended', nonMcu: true, description: 'Introduces Krysten Ritter\'s Jessica Jones and David Tennant\'s Kilgrave.', episodes: null },
-            { id: 403, title: 'Daredevil — Season 2', year: '2016', type: 'series', verdict: 'recommended', nonMcu: true, description: 'Introduces Jon Bernthal\'s Punisher and Elodie Yung\'s Elektra. Key Daredevil lore.', episodes: null },
-            { id: 404, title: 'Luke Cage — Season 1', year: '2016', type: 'series', verdict: 'optional', nonMcu: true, description: 'Introduces Luke Cage and expands Harlem\'s criminal underworld.', episodes: null },
-            { id: 405, title: 'Iron Fist — Season 1', year: '2017', type: 'series', verdict: 'skip', nonMcu: true, description: 'Introduces Danny Rand/Iron Fist and the mystical order of The Hand.', episodes: null },
+            { id: 402, title: 'Jessica Jones — Season 1', poster: 'https://m.media-amazon.com/images/M/MV5BMDhhY2VlMWItMjM3Yi00MDc1LTlmYjctNjMzNDIxZjc5NGEwXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2015', type: 'series', verdict: 'recommended', nonMcu: true, description: 'Introduces Krysten Ritter\'s Jessica Jones and David Tennant\'s Kilgrave.', episodes: null },
+            { id: 403, title: 'Daredevil — Season 2', poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/9i9X1kpqxfLYbMoZGdh9HNPTtqq.jpg', year: '2016', type: 'series', verdict: 'recommended', nonMcu: true, description: 'Introduces Jon Bernthal\'s Punisher and Elodie Yung\'s Elektra. Key Daredevil lore.', episodes: null },
+            { id: 404, title: 'Luke Cage — Season 1', poster: 'https://m.media-amazon.com/images/M/MV5BMTcyMzc1MjI5MF5BMl5BanBnXkFtZTgwMzE4ODY2OTE@._V1_FMjpg_UX600_.jpg', year: '2016', type: 'series', verdict: 'optional', nonMcu: true, description: 'Introduces Luke Cage and expands Harlem\'s criminal underworld.', episodes: null },
+            { id: 405, title: 'Iron Fist — Season 1', poster: 'https://m.media-amazon.com/images/M/MV5BMjI5Mjg1NDcyOV5BMl5BanBnXkFtZTgwMjAxOTQ5MTI@._V1_FMjpg_UX600_.jpg', year: '2017', type: 'series', verdict: 'skip', nonMcu: true, description: 'Introduces Danny Rand/Iron Fist and the mystical order of The Hand.', episodes: null },
             { id: 406, title: 'The Defenders', poster: 'https://m.media-amazon.com/images/M/MV5BMTUwMjA5NTg4MF5BMl5BanBnXkFtZTgwODUyODkwMzI@._V1_FMjpg_UX600_.jpg',  year: '2017', type: 'series', verdict: 'optional', nonMcu: true, description: 'Crossover uniting Daredevil, Jessica Jones, Luke Cage, and Iron Fist.', episodes: null },
-            { id: 407, title: 'The Punisher — Season 1', year: '2017', type: 'series', verdict: 'recommended', nonMcu: true, description: 'Frank Castle\'s solo series. Jon Bernthal\'s Punisher appears in Born Again.', episodes: null },
-            { id: 408, title: 'Daredevil — Season 3', year: '2018', type: 'series', verdict: 'essential', nonMcu: true, description: 'The best season. Kingpin\'s return to power. Directly sets up Born Again.', episodes: [
+            { id: 407, title: 'The Punisher — Season 1', poster: 'https://m.media-amazon.com/images/M/MV5BZTI2NDllMjgtOWEyYi00Y2YxLThhYjQtNTQ0NTgwNDE1YmYzXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2017', type: 'series', verdict: 'recommended', nonMcu: true, description: 'Frank Castle\'s solo series. Jon Bernthal\'s Punisher appears in Born Again.', episodes: null },
+            { id: 408, title: 'Daredevil — Season 3', poster: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/9i9X1kpqxfLYbMoZGdh9HNPTtqq.jpg', year: '2018', type: 'series', verdict: 'essential', nonMcu: true, description: 'The best season. Kingpin\'s return to power. Directly sets up Born Again.', episodes: [
               { code: 'S3E1', title: 'Resurrection' }, { code: 'S3E2', title: 'Please' }, { code: 'S3E3', title: 'No Good Deed' }, { code: 'S3E4', title: 'Blindsided' }, { code: 'S3E5', title: 'The Perfect Game' }, { code: 'S3E6', title: 'The Devil You Know' }, { code: 'S3E7', title: 'Aftermath' }, { code: 'S3E8', title: 'Upstairs/Downstairs' }, { code: 'S3E9', title: 'Revelations' }, { code: 'S3E10', title: 'Karen' }, { code: 'S3E11', title: 'Reunion' }, { code: 'S3E12', title: 'One Last Shot' }, { code: 'S3E13', title: 'A New Napkin' }
             ]},
-            { id: 409, title: 'The Punisher — Season 2', year: '2019', type: 'series', verdict: 'optional', nonMcu: true, description: 'Continues Frank Castle\'s war on corruption. Sets up his Born Again return.', episodes: null }
+            { id: 409, title: 'The Punisher — Season 2', poster: 'https://m.media-amazon.com/images/M/MV5BZTI2NDllMjgtOWEyYi00Y2YxLThhYjQtNTQ0NTgwNDE1YmYzXkEyXkFqcGc@._V1_FMjpg_UX600_.jpg', year: '2019', type: 'series', verdict: 'optional', nonMcu: true, description: 'Continues Frank Castle\'s war on corruption. Sets up his Born Again return.', episodes: null }
           ]
         },
         {
@@ -391,6 +391,7 @@ class MCUApp {
     this.bindEvents();
     this.updateAllProgress();
     this.initCompletedPhases();
+    this.applyFilters();
   }
 
   renderHero() {
@@ -507,44 +508,17 @@ class MCUApp {
   }
 
   renderContent() {
-    if (this.searchQuery) {
-      return MCU_DATA.sagas.map(saga => `
-        <section class="saga-section" data-saga="${saga.id}">
-          <div class="saga-header">
-            <span class="saga-icon">${saga.icon}</span>
-            <h2 class="saga-title">${saga.name}</h2>
-            <div class="saga-line"></div>
-          </div>
-          <p class="saga-subtitle">${saga.years}</p>
-          ${saga.phases.map(phase => this.renderPhase(phase)).join('')}
-        </section>
-      `).join('');
-    }
-
-    let activePhaseData = null;
-    let activeSagaData = null;
-    MCU_DATA.sagas.forEach(saga => {
-      saga.phases.forEach(phase => {
-        if (phase.id === this.activeTab) {
-          activePhaseData = phase;
-          activeSagaData = saga;
-        }
-      });
-    });
-
-    if (!activePhaseData) return '';
-
-    return `
-      <section class="saga-section" data-saga="${activeSagaData.id}">
+    return MCU_DATA.sagas.map(saga => `
+      <section class="saga-section" data-saga="${saga.id}">
         <div class="saga-header">
-          <span class="saga-icon">${activeSagaData.icon}</span>
-          <h2 class="saga-title">${activeSagaData.name}</h2>
+          <span class="saga-icon">${saga.icon}</span>
+          <h2 class="saga-title">${saga.name}</h2>
           <div class="saga-line"></div>
         </div>
-        <p class="saga-subtitle">${activeSagaData.years}</p>
-        ${this.renderPhase(activePhaseData)}
+        <p class="saga-subtitle">${saga.years}</p>
+        ${saga.phases.map(phase => this.renderPhase(phase)).join('')}
       </section>
-    `;
+    `).join('');
   }
 
   renderPhase(phase) {
@@ -671,37 +645,6 @@ class MCUApp {
   bindEvents() {
     const app = document.getElementById('app');
     app.addEventListener('click', (e) => {
-      const checkBox = e.target.closest('.check-box');
-      if (checkBox) {
-        const input = checkBox.parentElement.querySelector('.check-input');
-        const entryId = parseInt(input.dataset.entryId);
-        this.handleMainCheck(entryId);
-        return;
-      }
-
-      const epCheckBox = e.target.closest('.ep-check-box');
-      if (epCheckBox) {
-        const item = epCheckBox.closest('.episode-item');
-        const epId = item.dataset.epId;
-        this.handleEpisodeCheck(epId);
-        return;
-      }
-
-      const toggle = e.target.closest('.episodes-toggle');
-      if (toggle) {
-        const entryId = toggle.dataset.entryId;
-        const list = document.getElementById(`episodes-${entryId}`);
-        toggle.classList.toggle('open');
-        list.classList.toggle('expanded');
-        return;
-      }
-
-      const tabBtn = e.target.closest('.tab-btn');
-      if (tabBtn) {
-        this.setActiveTab(tabBtn.dataset.tab);
-        return;
-      }
-
       const filterBtn = e.target.closest('.filter-btn');
       if (filterBtn) {
         this.handleFilter(filterBtn.dataset.filter);
@@ -739,55 +682,6 @@ class MCUApp {
     return entry;
   }
 
-  handleMainCheck(entryId) {
-    const newState = this.tracker.toggle(`entry-${entryId}`);
-    const card = document.querySelector(`.entry-card[data-id="${entryId}"]`);
-    const checkBox = card.querySelector('.check-box');
-
-    card.classList.toggle('watched', newState);
-    checkBox.classList.toggle('checked', newState);
-
-    const entry = this.findEntry(entryId);
-    if (entry && entry.episodes) {
-      entry.episodes.forEach(ep => {
-        this.tracker.setWatched(`ep-${entryId}-${ep.code}`, newState);
-        const epItem = document.querySelector(`[data-ep-id="ep-${entryId}-${ep.code}"]`);
-        if (epItem) {
-          epItem.classList.toggle('watched', newState);
-          const epBox = epItem.querySelector('.ep-check-box');
-          if (epBox) epBox.classList.toggle('checked', newState);
-        }
-      });
-    }
-
-    this.updateAllProgress();
-  }
-
-  handleEpisodeCheck(epId) {
-    const newState = this.tracker.toggle(epId);
-    const epItem = document.querySelector(`[data-ep-id="${epId}"]`);
-    epItem.classList.toggle('watched', newState);
-    const epBox = epItem.querySelector('.ep-check-box');
-    epBox.classList.toggle('checked', newState);
-
-    const parts = epId.split('-');
-    const entryId = parseInt(parts[1]);
-    const entry = this.findEntry(entryId);
-
-    if (entry && entry.episodes) {
-      const allWatched = entry.episodes.every(ep =>
-        this.tracker.isWatched(`ep-${entryId}-${ep.code}`)
-      );
-      this.tracker.setWatched(`entry-${entryId}`, allWatched);
-      const card = document.querySelector(`.entry-card[data-id="${entryId}"]`);
-      card.classList.toggle('watched', allWatched);
-      const mainBox = card.querySelector('.check-box');
-      mainBox.classList.toggle('checked', allWatched);
-    }
-
-    this.updateAllProgress();
-  }
-
   handleFilter(filter) {
     this.activeFilter = filter;
     document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -797,20 +691,38 @@ class MCUApp {
   }
 
   applyFilters() {
-    document.querySelectorAll('.entry-card').forEach(card => {
-      const type = card.dataset.type;
-      const isNonMcu = card.dataset.nonMcu === 'true';
-      const title = card.querySelector('.card-title').textContent.toLowerCase();
-      let matchesFilter;
-      if (this.activeFilter === 'all') {
-        matchesFilter = true;
-      } else if (this.activeFilter === 'non-mcu') {
-        matchesFilter = isNonMcu;
+    const isSearchActive = !!this.searchQuery;
+
+    document.querySelectorAll('.phase-section').forEach(phaseEl => {
+      const matchesTab = phaseEl.dataset.phase === this.activeTab;
+      let phaseHasVisibleEntries = false;
+
+      phaseEl.querySelectorAll('.entry-card').forEach(card => {
+        const type = card.dataset.type;
+        const isNonMcu = card.dataset.nonMcu === 'true';
+        const title = card.querySelector('.card-title').textContent.toLowerCase();
+        let matchesFilter = true;
+        
+        if (this.activeFilter === 'non-mcu') matchesFilter = isNonMcu;
+        else if (this.activeFilter !== 'all') matchesFilter = type === this.activeFilter;
+        
+        const matchesSearch = !isSearchActive || title.includes(this.searchQuery);
+        const isVisible = matchesFilter && matchesSearch;
+        
+        card.classList.toggle('hidden', !isVisible);
+        if (isVisible) phaseHasVisibleEntries = true;
+      });
+
+      if (isSearchActive) {
+        phaseEl.classList.toggle('hidden', !phaseHasVisibleEntries);
       } else {
-        matchesFilter = type === this.activeFilter;
+        phaseEl.classList.toggle('hidden', !matchesTab);
       }
-      const matchesSearch = !this.searchQuery || title.includes(this.searchQuery);
-      card.classList.toggle('hidden', !(matchesFilter && matchesSearch));
+    });
+
+    document.querySelectorAll('.saga-section').forEach(sagaEl => {
+      const visiblePhases = Array.from(sagaEl.querySelectorAll('.phase-section')).filter(p => !p.classList.contains('hidden'));
+      sagaEl.classList.toggle('hidden', visiblePhases.length === 0);
     });
   }
 

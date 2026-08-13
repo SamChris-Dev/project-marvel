@@ -601,10 +601,10 @@ body {
 }
 
 .entry-card.unwatched .poster-img {
-  filter: grayscale(80%) brightness(0.8);
+  filter: none;
 }
 .entry-card.watched .poster-img {
-  filter: grayscale(0%) brightness(1);
+  filter: grayscale(25%) brightness(0.85);
 }
 
 .entry-card.up-next .poster-container {
@@ -881,7 +881,7 @@ body {
 }
 
 /* ---- Footer ---- */
-footer {
+.footer {
   text-align: center;
   padding: 40px 24px;
   border-top: 1px solid var(--border-subtle);
