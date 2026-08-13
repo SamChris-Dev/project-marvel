@@ -348,6 +348,7 @@ class MCUApp {
     this.searchTimeout = null;
     this.activeTab = 'phase-1'; // Default tab
     this.completedPhases = new Set();
+    this.currentView = 'home';
     this.render();
     this.setupScrollListener();
   }
@@ -377,21 +378,33 @@ class MCUApp {
 
   render() {
     const app = document.getElementById('app');
-    app.innerHTML =
-      this.renderHero() +
-      this.renderToolbar() +
-      this.renderTabs() +
-      this.renderLegend() +
-      '<div class="main-content">' +
-        this.renderContent() +
-        this.renderFastTrack() +
-      '</div>' +
-      this.renderFooter() +
-      this.renderToastContainer();
+    
+    let mainContent = '';
+    
+    if (this.currentView === 'home' && !this.searchQuery) {
+      mainContent = 
+        this.renderToolbar() +
+        this.renderHero() +
+        '<div class="main-content">' +
+          this.renderHomeView() +
+          this.renderFastTrack() +
+        '</div>';
+    } else {
+      mainContent = 
+        this.renderToolbar() +
+        '<div class="main-content">' +
+          this.renderContent() +
+        '</div>';
+    }
+
+    app.innerHTML = mainContent + this.renderBottomNavigation() + this.renderFooter() + this.renderToastContainer();
+    
     this.bindEvents();
     this.updateAllProgress();
     this.initCompletedPhases();
-    this.applyFilters();
+    if (this.currentView === 'phase' || this.searchQuery) {
+      this.applyFilters();
+    }
   }
 
   renderHero() {
@@ -452,7 +465,6 @@ class MCUApp {
     <nav class="toolbar" id="toolbar">
       <div class="toolbar-inner">
         <div class="site-logo">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--accent-red)"><path d="M12 2L2 22h20L12 2z"/></svg>
           MCU<span>Tracker</span>
         </div>
         <div class="filter-group">
@@ -471,39 +483,112 @@ class MCUApp {
     </nav>`;
   }
 
-  renderTabs() {
-    const allPhases = [];
+  renderHomeView() {
+    let html = '<div class="sagas-container">';
+
     MCU_DATA.sagas.forEach(saga => {
+      html += `
+        <div class="home-saga-section">
+          <h2 class="home-saga-title">${saga.name}</h2>
+          <div class="home-phases-grid">
+      `;
+
       saga.phases.forEach(phase => {
-        allPhases.push(phase);
+        const total = phase.entries.length;
+        let watched = 0;
+        const posters = [];
+        
+        phase.entries.forEach(entry => {
+          if (this.tracker.isWatched(`entry-${entry.id}`)) watched++;
+          if (entry.poster) posters.push(entry.poster);
+        });
+        
+        const pct = total ? Math.round((watched / total) * 100) : 0;
+        const randomPoster = posters.length > 0 ? posters[Math.floor(Math.random() * posters.length)] : '';
+        const bgHtml = randomPoster ? `<div class="phase-card-bg" style="background-image: url('${randomPoster}')"></div>` : '';
+        
+        html += `
+          <div class="phase-card" onclick="app.navigateToPhase('${phase.id}')">
+            ${bgHtml}
+            <div class="phase-card-overlay"></div>
+            <div class="phase-card-content">
+              <div class="phase-card-header">
+                <h3 class="phase-card-title">${phase.name}</h3>
+                <p class="phase-card-saga">${saga.years}</p>
+              </div>
+              <div class="phase-card-progress">
+                <div class="phase-progress-bar"><div class="phase-progress-fill" style="width: ${pct}%"></div></div>
+                <span class="phase-progress-text">${watched}/${total}</span>
+              </div>
+            </div>
+          </div>
+        `;
       });
-    });
 
-    const activePhaseName = allPhases.find(p => p.id === this.activeTab)?.name || 'Select Phase';
-
-    return `
-      <div class="phase-dropdown-wrapper">
-        <div class="phase-dropdown" onclick="event.stopPropagation(); document.getElementById('phase-menu').classList.toggle('show')">
-          <button class="phase-dropdown-btn">
-            <span>${activePhaseName}</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </button>
-          <div class="phase-dropdown-menu" id="phase-menu">
-            ${allPhases.map(phase => `
-              <button class="dropdown-item ${this.activeTab === phase.id ? 'active' : ''}" onclick="app.setActiveTab('${phase.id}')">
-                ${phase.name}
-              </button>
-            `).join('')}
+      html += `
           </div>
         </div>
+      `;
+    });
+
+    html += `</div>`;
+    return html;
+  }
+
+
+  renderBottomNavigation() {
+    if (this.currentView === 'home' && !this.searchQuery) {
+      return `
+        <div class="bottom-navigation" style="justify-content: center;">
+          <button class="reset-btn" id="reset-btn">Reset All Progress</button>
+        </div>
+      `;
+    }
+
+    const allPhases = [];
+    MCU_DATA.sagas.forEach(saga => {
+      saga.phases.forEach(phase => allPhases.push(phase));
+    });
+    
+    const currentIndex = allPhases.findIndex(p => p.id === this.activeTab);
+    const prevPhase = currentIndex > 0 ? allPhases[currentIndex - 1] : null;
+    const nextPhase = currentIndex < allPhases.length - 1 ? allPhases[currentIndex + 1] : null;
+    
+    return `
+      <div class="bottom-navigation">
+        <button class="nav-btn prev-btn" ${prevPhase ? `onclick="app.navigateToPhase('${prevPhase.id}')"` : 'style="visibility: hidden;"'}>
+          &larr; ${prevPhase ? prevPhase.name : 'None'}
+        </button>
+        
+        <button class="reset-btn" id="reset-btn">Reset All Progress</button>
+        
+        <button class="nav-btn next-btn" ${nextPhase ? `onclick="app.navigateToPhase('${nextPhase.id}')"` : 'style="visibility: hidden;"'}>
+          ${nextPhase ? nextPhase.name : 'None'} &rarr;
+        </button>
       </div>
     `;
   }
 
-  setActiveTab(tabId) {
-    this.activeTab = tabId;
+  navigateToPhase(phaseId) {
+    this.activeTab = phaseId;
+    this.currentView = 'phase';
+    this.searchQuery = '';
+    
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) searchInput.value = '';
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    this.render();
+  }
+
+  navigateToHome() {
+    this.currentView = 'home';
+    this.searchQuery = '';
+    
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) searchInput.value = '';
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.render();
   }
 
@@ -511,9 +596,14 @@ class MCUApp {
     return MCU_DATA.sagas.map(saga => `
       <section class="saga-section" data-saga="${saga.id}">
         <div class="saga-header">
-          <span class="saga-icon">${saga.icon}</span>
           <h2 class="saga-title">${saga.name}</h2>
           <div class="saga-line"></div>
+          <button class="nav-btn home-btn" onclick="app.navigateToHome()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Home
+          </button>
         </div>
         <p class="saga-subtitle">${saga.years}</p>
         ${saga.phases.map(phase => this.renderPhase(phase)).join('')}
@@ -524,13 +614,34 @@ class MCUApp {
   renderPhase(phase) {
     let idx = 0;
     const stats = { total: phase.entries.length, watched: 0 };
-    phase.entries.forEach(e => { if (this.tracker.isWatched(`entry-${e.id}`)) stats.watched++; });
+    const posters = [];
+    phase.entries.forEach(e => { 
+      if (this.tracker.isWatched(`entry-${e.id}`)) stats.watched++; 
+      if (e.poster) posters.push(e.poster);
+    });
     
+    const pct = stats.total ? Math.round((stats.watched / stats.total) * 100) : 0;
+    const isComplete = stats.watched === stats.total && stats.total > 0;
+    const randomPoster = posters.length > 0 ? posters[Math.floor(Math.random() * posters.length)] : '';
+    
+    const bgHtml = randomPoster ? `
+      <div class="phase-page-bg-container">
+        <div class="phase-page-bg" style="background-image: url('${randomPoster}')"></div>
+        <div class="phase-page-overlay"></div>
+      </div>
+    ` : '';
+
     return `
       <div class="phase-section" data-phase="${phase.id}">
-        <div class="phase-header">
-          <h3 class="phase-title">${phase.name}</h3>
-          <span class="phase-progress-text"><span>${stats.watched}</span> / ${stats.total} watched</span>
+        ${bgHtml}
+        <div class="phase-header ${isComplete ? 'complete' : ''}">
+          <div class="phase-header-title-row">
+            <h3 class="phase-title">${phase.name}</h3>
+            ${isComplete ? `<span class="phase-complete-badge">✓ Complete</span>` : `<span class="phase-progress-text"><span>${stats.watched}</span> / ${stats.total} watched</span>`}
+          </div>
+          <div class="phase-header-bar-container">
+            <div class="phase-header-bar-fill" style="width: ${pct}%"></div>
+          </div>
         </div>
         <div class="entries-grid">
           ${phase.entries.map(entry => {
@@ -539,10 +650,11 @@ class MCUApp {
             return html;
           }).join('')}
         </div>
-      </div>`;
+      </div>
+    `;
   }
 
-  renderEntry(entry, index) {
+  renderEntry(entry, index, priority = null) {
     const isWatched = this.tracker.isWatched(`entry-${entry.id}`);
     
     // Determine if it is the "up next" entry
@@ -565,6 +677,7 @@ class MCUApp {
     const stateClass = isWatched ? 'watched' : (isUpNext ? 'up-next' : 'unwatched');
     
     let posterHtml = '';
+    const badgeHtml = priority ? `<div class="priority-badge">${priority}</div>` : '';
     if (entry.poster) {
       posterHtml = `<img src="${entry.poster}" alt="${entry.title} Poster" class="poster-img" loading="lazy">`;
     } else {
@@ -583,6 +696,7 @@ class MCUApp {
     return `
       <div class="entry-card ${stateClass}" data-id="${entry.id}" data-type="${entry.type}" data-non-mcu="${!!entry.nonMcu}">
         <div class="poster-container" onclick="app.openModal(${entry.id})">
+          ${badgeHtml}
           ${posterHtml}
           <div class="status-badge">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -605,35 +719,72 @@ class MCUApp {
   }
 
   renderFastTrack() {
+    const fastTrackIds = [
+      { id: 6, priority: 1, reason: 'Establishes the original team dynamic' },
+      { id: 19, priority: 2, reason: 'The Thanos saga — mandatory context' },
+      { id: 22, priority: 3, reason: "Direct predecessor to Doomsday's story" },
+      { id: 27, priority: 4, reason: 'Explains the current state of the multiverse' },
+      { id: 32, priority: 5, reason: 'The multiverse cracks open' },
+      { id: 34, priority: 6, reason: 'Multiversal incursions and dangers' },
+      { id: 47, priority: 7, reason: 'Bridges X-Men into the MCU' },
+      { id: 25, priority: 8, reason: 'Sam Wilson becomes Captain America' },
+      { id: 53, priority: 9, reason: 'The "New Avengers" team forms' },
+      { id: 56, priority: 10, reason: 'Introduces the team central to Doomsday' },
+      { id: 60, priority: 11, reason: 'Direct Doomsday setup' }
+    ];
+
+    const fastTrackEntries = [];
+    fastTrackIds.forEach(item => {
+      let found = null;
+      MCU_DATA.sagas.forEach(s => s.phases.forEach(p => p.entries.forEach(e => {
+        if (e.id === item.id) found = e;
+      })));
+      if (found) {
+        fastTrackEntries.push({ entry: found, priority: item.priority, reason: item.reason });
+      }
+    });
+
     return `
     <section class="fast-track-section">
-      <h2 class="fast-track-title">🎯 The Doomsday Fast Track</h2>
+      <h2 class="fast-track-title">The Doomsday Fast Track</h2>
       <p class="fast-track-subtitle">Short on time? Here's your bare minimum MCU watchlist in order.</p>
-      <div class="fast-track-grid">
-        ${MCU_DATA.fastTrack.map(item => `
-          <div class="ft-card">
-            <span class="ft-priority">${item.priority}</span>
-            <div class="ft-info">
-              <span class="ft-title">${item.title}<span class="ft-type-badge">${item.type}</span></span>
-              <p class="ft-reason">${item.reason}</p>
-            </div>
+      
+      <div class="fast-track-carousel">
+        ${fastTrackEntries.map((item, idx) => `
+          <div class="ft-carousel-item" title="${item.reason}">
+            ${this.renderEntry(item.entry, idx, item.priority)}
           </div>
         `).join('')}
       </div>
       <div class="tips-section">
-        <h3 class="tips-title">💡 Got more time? Add these for richer context:</h3>
-        <ul class="tips-list">
-          ${MCU_DATA.tips.map(t => `<li class="tip-item">${t}</li>`).join('')}
-        </ul>
+        <h3 class="tips-title">Got more time? Add these for richer context:</h3>
+        <div class="tips-grid">
+          ${MCU_DATA.tips.map(t => {
+            const parts = t.split(' — ');
+            const title = parts[0];
+            const reason = parts[1] || '';
+            return `
+              <div class="tip-mini-card">
+                <div class="tip-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                </div>
+                <div class="tip-content">
+                  <h4 class="tip-title">${title}</h4>
+                  ${reason ? `<p class="tip-reason">${reason}</p>` : ''}
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
       </div>
     </section>`;
   }
 
   renderFooter() {
+    const year = new Date().getFullYear();
     return `
     <footer class="footer">
-      <p class="footer-text">Built with <span class="footer-heart">❤</span> for the MCU · Accurate as of August 2026</p>
-      <button class="reset-btn" id="reset-btn">Reset All Progress</button>
+      <p class="footer-text">&copy; ${year} Sam Chris&trade;. Created this website with <span class="footer-heart">❤</span> for the MCU.</p>
     </footer>`;
   }
 
