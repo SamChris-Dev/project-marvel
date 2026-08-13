@@ -1,7 +1,7 @@
 const fs = require('fs');
 
-const posters = JSON.parse(fs.readFileSync('posters.json'));
-let appJs = fs.readFileSync('app.js', 'utf8');
+const posters = JSON.parse(fs.readFileSync('../data/posters.json'));
+let appJs = fs.readFileSync('../js/mcu_data.js', 'utf8');
 
 for (const [title, url] of Object.entries(posters)) {
   if (!url) continue;
@@ -18,5 +18,5 @@ for (const [title, url] of Object.entries(posters)) {
   }
 }
 
-fs.writeFileSync('app.js', appJs);
-console.log('Posters injected into app.js');
+fs.writeFileSync('../js/mcu_data.js', appJs);
+console.log('Posters injected into mcu_data.js');
