@@ -349,6 +349,8 @@ class MCUApp {
     this.activeTab = 'phase-1'; // Default tab
     this.completedPhases = new Set();
     this.currentView = 'home';
+    this.initCompletedPhases();
+    this.bindEvents();
     this.render();
     this.setupScrollListener();
   }
@@ -399,9 +401,7 @@ class MCUApp {
 
     app.innerHTML = mainContent + this.renderBottomNavigation() + this.renderFooter() + this.renderToastContainer();
     
-    this.bindEvents();
     this.updateAllProgress();
-    this.initCompletedPhases();
     if (this.currentView === 'phase' || this.searchQuery) {
       this.applyFilters();
     }
@@ -805,22 +805,22 @@ class MCUApp {
       if (e.target.closest('#reset-btn')) {
         if (confirm('Reset all watch progress? This cannot be undone.')) {
           this.tracker.reset();
+          this.completedPhases.clear();
           this.render();
         }
         return;
       }
     });
 
-    const searchInput = document.getElementById('search-input');
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
+    app.addEventListener('input', (e) => {
+      if (e.target.id === 'search-input') {
         clearTimeout(this.searchTimeout);
         this.searchTimeout = setTimeout(() => {
           this.searchQuery = e.target.value.toLowerCase().trim();
           this.applyFilters();
         }, 200);
-      });
-    }
+      }
+    });
   }
 
   findEntry(entryId) {
