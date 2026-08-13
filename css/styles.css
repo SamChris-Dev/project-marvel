@@ -1153,8 +1153,18 @@ body {
     width: 100%;
     max-width: none;
   }
-  .entries-grid {
+  .entries-grid, .home-phases-grid {
     grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  .phase-card {
+    aspect-ratio: 2 / 3;
+    min-height: auto;
+  }
+  .phase-card-content {
+    padding: 16px;
+  }
+  .phase-card-title {
+    font-size: 1.2rem;
   }
   .modal-content {
     width: 95%;
@@ -1201,7 +1211,7 @@ body {
 }
 
 @media (max-width: 480px) {
-  .entries-grid {
+  .entries-grid, .home-phases-grid {
     grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
