@@ -1109,6 +1109,28 @@ body {
   footer {
     padding: 24px 16px;
   }
+  .bottom-navigation {
+    flex-direction: column;
+    padding: 24px 16px 40px 16px;
+    gap: 12px;
+  }
+  .nav-btn, .reset-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 12px;
+    font-size: 1rem;
+  }
+  .phase-header-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .phase-title {
+    font-size: 1.8rem;
+  }
+  .home-saga-title, .saga-title {
+    font-size: 1.6rem;
+  }
 }
 
 @media (max-width: 480px) {
